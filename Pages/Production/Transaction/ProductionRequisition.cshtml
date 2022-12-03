@@ -1,0 +1,169 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Production Requisition<small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;"> <button id="btn_new" class="btn btn-info"> New</button></p>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="container">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="card-box table-responsive">
+                                <table id="Table_View" class="table table-striped table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;width:150px">Action</th>
+                                            <th>No</th>
+                                            <th>Date</th>
+                                            <th>Department</th>
+                                            <th>Status</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <!-- end project list -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Create Modal Start *@
+
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important; margin-top:6%; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Production Requisition</h4>
+                <div id="img_load_sav" style="width:100%;text-align:center;">
+                    <img src="~/images/working.GIF" />
+                </div>
+            </div>
+            <form id="create_form">
+                <div class="row">
+                    <div class="form-horizontal">
+
+                        <div class="col-md-12" style="text-align:right;">
+                            <input id="btn_sav" type="button" value="Save" onclick="savrec();"
+                                class="btn btn-success" />
+                            <input id="btn_update" type="button" value="Update" onclick="updrec();"
+                                class="btn btn-warning" />
+                            <input id="btn_cls" type="button" value="Close" onclick="discon()" class="btn btn-danger"
+                                data-dismiss="modal" />
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    ID
+                                </label>
+                                <label class="col-md-2 control-label" id="txt_id" style="display: none;">
+                                </label>
+                                <label class="col-md-2 control-label" id="txt_no" style="text-align:left;">
+                                </label>
+                                <div class="col-md-2"></div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Date
+                                </label>
+                                <div class="col-md-4">
+                                    <div class='input-group date' id='txt_dat'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Department
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="text" id="txt_dpt" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Job#
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="text" id="txt_job" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Item
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="text" id="txt_itm" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Qty
+                                </label>
+                                <div class="col-md-2">
+                                    <input type="number" id="txt_qty" class="form-control" value="1" min="1" />
+                                </div>
+                                <label id="txt_scale" class="control-label col-md-2" style="text-align:left;">
+
+                                </label>
+                                <div class="col-md-1">
+                                    <input id="btn_adddetail" type="button" value="Add" onclick="AddDetail()"
+                                        class="btn btn-success" />
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="col-md-12">
+
+                                    <table id="detailsTable" class="table table-striped table-bordered">
+                                        <thead style="text-align:center">
+                                            <tr>
+                                                <th>Action</th>
+                                                <th style="display: none;">Job ID</th>
+                                                <th>Job#</th>
+                                                <th style="display: none;">Item ID</th>
+                                                <th>Item</th>
+                                                <th>Quantity</th>
+                                                <th>Scale</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@* Create Modal End *@
+
+
+<script src="~/FunctionJS/Production/Transaction/ProductionRequisition.js?@Guid.NewGuid().ToString("n")"></script>

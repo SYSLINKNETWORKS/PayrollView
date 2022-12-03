@@ -1,0 +1,228 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+
+
+<div class="row">
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>PAYROLL DASHBOARD</h2>
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-4">
+                    <div class='input-group date' id='txt_Date'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar">
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-light" onclick="GetRecord();"><i class="fa fa-filter"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 1%;">
+    <div class="col-md-3 col-xs-3">
+        <div class="px-2" style="background-color: rgba(132, 89, 174, 0.9); color:white;padding: 2%">
+            <img id="img_box_total_strength" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Total Strength</p>
+            <h3 id="box_total_strength" style="font-size:xx-large;text-align:center;"></h3>
+        </div>
+    </div>
+    <div class="col-md-3 col-xs-3">
+        <div class="px-2" style="background-color:rgba(225, 71, 74, 1.0); color:white;padding: 2%">
+            <img id="img_box_total_present" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Total Present</p>
+            <h3 id="box_total_present" style="font-size:xx-large;text-align:center;"></h3>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-xs-3">
+        <div style="background-color:rgba(70, 144, 188, 1.0); color:white;padding: 2%">
+            <img id="img_box_total_absent" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Total Absent</p>
+            <h3 id="box_total_absent" style="font-size:xx-large;text-align:center;"></h3>
+        </div>
+    </div>
+    <div class="col-md-3 col-xs-3">
+        <div class="px-2" style="background-color:rgb(77, 179, 153); color:white;padding: 2%">
+            <img id="img_box_total_late" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Total Late</p>
+            <h3 id="box_total_late" style="font-size:xx-large;text-align:center;""></h3>
+        </div>
+    </div>
+    <div class=" clearfix">
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 1%;">
+
+        <div class="col-md-8 col-xs-8">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">Total Present <span style="font-size:small;" id="spn_totalpresent"
+                        class="badge badge-pill badge-secondary">0</span></h4>
+                <table class="table table-striped" id="tbl_totalpresent" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-4">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">Total Absent <span style="font-size:small;" id="spn_totalabsent"
+                        class="badge badge-pill badge-secondary">0</span></h4>
+                <table class="table table-striped" id="tbl_totalabsent" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-4 ">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">Machine Information <span style="font-size:small;"
+                        id="spn_MachineInformation" class="badge badge-pill badge-secondary">0</span></h4>
+                <table class="table table-striped" id="tbl_MachineInformation" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">Machine Log <span style="font-size:small;" id="spn_MachineError"
+                        class="badge badge-pill badge-secondary">0</span></h4>
+                <table class="table table-striped" id="tbl_MachineError" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Total Late <span style="font-size:small;" id="spn_totallate"
+                        class="badge badge-pill badge-secondary">0</span>
+                    <table class="table table-striped" id="tbl_totallate" style="font-size:small;">
+                    </table>
+                </h4>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-bottom: 1%;">
+
+        <div class="col-md-8">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">In-Out Editor Approval <span style="font-size:small;"
+                        id="spn_totalinoutapp" class="badge badge-pill badge-secondary">0</span>
+                </h4>
+                <img id="img_total_inOut_Appoved" src="~/images/dashboard.GIF" />
+                <table class="table table-striped table-bordered table-sm" id="tbl_totalinoutapp"
+                    style="font-size:small;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center;">Action</th>
+                            <th>Employee</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+            @* Total In-Out Start *@
+                <h4 style="font-weight:bold;">MAP <span style="font-size:small;" id="spn_totalinoutmap"
+                        class="badge badge-pill badge-secondary">0</span></h4>
+                <img id="img_totalinout" src="~/images/dashboard.GIF" />
+                <table class="table table-striped" id="tbl_totalinoutmap" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-8">
+            <div class="bg-white" style=" color: rgb(128, 128, 128); height: 450px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Department Wise Present <span style="font-size:small;" id="spn_totalpresent_chart"
+                        class="badge badge-pill badge-secondary"></span>
+                </h4>
+                <div id="tbl_totalpresent_chart" style="height: 380px"></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-white" style="color: rgb(128, 128, 128);overflow:scroll; height:450px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Total Present Department Wise <span style="font-size:small;" id="spn_present_tbl"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4>
+                <img id="img_present_graph" src="~/images/dashboard.GIF" />
+                <table class="table table-striped" id="tbl_present_graph" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-8">
+            <div class="bg-white" style="color: rgb(128, 128, 128);height: 480px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Department Wise Absent <span style="font-size:small;" id="spn_totalabsent_chart"
+                        class="badge badge-pill badge-secondary"></span>
+                </h4>
+                <div id="tbl_totalabsent_chart" style="height: 380px"></div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="bg-white" style="color: rgb(128, 128, 128);overflow:scroll; height:480px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Total Absent Department Wise <span style="font-size:small;" id="spn_absent_tbl"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4><img id="img_absent_graph" src="~/images/dashboard.GIF" />
+                <table class="table table-striped" id="tbl_absent_graph" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-8">
+            <div class="bg-white" style="color: rgb(128, 128, 128);overflow:scroll; height:480px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Department Wise Late <span style="font-size:small;" id="spn_totallate_chart"
+                        class="badge badge-pill badge-secondary"></span>
+                </h4>
+                <div id="tbl_totallate_chart" style="height: 380px"></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-white" style="color: rgb(128, 128, 128);overflow:scroll; height:480px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Total Late Department Wise <span style="font-size:small;" id="spn_late_tbl"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4>
+                <img id="img_late_graph" src="~/images/dashboard.GIF" />
+                <table class="table table-striped" id="tbl_late_graph" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src='~/FunctionJS/Notification.js?@Guid.NewGuid().ToString("n")'></script>
+    <script src='~/FunctionJS/Payroll/Report/Dashboard/PayrollDashBoard.js?@Guid.NewGuid().ToString("n")'></script>

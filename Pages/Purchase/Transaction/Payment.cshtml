@@ -1,0 +1,249 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Payment<small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;"> <button id="btn_new" class="btn btn-info"> New</button></p>
+                <div class="clearfix"></div>
+            </div>
+            <div class="container">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="card-box table-responsive">
+                                <!-- start project list -->
+                                <table id="Table_View" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;">Action</th>
+                                            <th style="text-align:center;">No</th>
+                                            <th style="text-align:center;">Date</th>
+                                            <th style="text-align:center;">Supplier Name</th>
+                                            <th style="text-align:center;">Mode Of Payment </th>
+                                            <th style="text-align:center;">Account</th>
+                                            <th style="text-align:center;">Amount</th>
+                                            <th style="text-align:center;">Remarks</th>
+                                                <th style="text-align:center">Stage</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <!-- end project list -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@* Create Modal Start *@
+
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important; margin-top:6%; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Payment</h4>
+                <div id="img_load_sav" style="width:100%;text-align:center;">
+                    <img src="~/images/working.GIF" />
+                </div>
+            </div>
+            <form id="create_form">
+                <div class="row">
+                    <div class="form-horizontal">
+                        <div class="col-md-12" style="text-align:right;">
+                            <input id="btn_sav" type="button" value="Save" onclick="savrec();"
+                                class="btn btn-success" />
+                            <input id="btn_update" type="button" value="Update" onclick="updrec();"
+                                class="btn btn-warning" />
+                            <input id="btn_cls" type="button" value="Close" onclick="discon()" class="btn btn-danger"
+                                data-dismiss="modal" />
+                        </div>
+                        <div class="col-md-12">
+                            <label id="txt_id" style="display: none;"></label>
+                            <div class="form-group">
+
+                                <label class="control-label col-md-2" style="text-align:left;" style="display: none;">
+                                    NO#
+                                </label>
+
+                                <div class="col-md-4">
+                                    <label id="txt_no" class="form-control" readonly></label>
+                                </div>
+
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Date
+                                </label>
+                                <div class="col-md-4">
+                                    <div class='input-group date' id='txt_dat'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Supplier
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="text" id="txt_sup" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Currency
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_cur" class="form-control" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Exchange Rate
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" value="1" placeholder="1" id="txt_rat" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Mode Of Payment
+                                </label>
+                                <div class="col-md-4">
+                                    <select class="form-control" id="ddl_mop">
+                                        <option value="C" selected>CASH</option>
+                                        <option value="B">BANK</option>
+                                        <option value="J">JOURNAL VOURCHER</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Amount
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="number" id="txt_amount" class="form-control" min="0" value="0" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Account
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="text" id="txt_acc" class="form-control" />
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Remarks
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="text" id="txt_rmk" class="form-control" />
+                                </div>
+                            </div>
+                            <div id="div_bank" class="form-group">
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" style="text-align:left;" id="lblchq">
+                                        Chq#
+                                    </label>
+                                    <div class="col-md-3">
+                                        <input type="text" id="txt_chq" class="form-control" />
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div id="chqdate">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Chq Date
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class='input-group date' id='txt_cdat'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar">
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" style="text-align:left;" id="lblcustomerBank">
+                                        Supplier Bank
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="txt_SupplierBank" class="form-control" />
+                                    </div>
+                                    <label class="control-label col-md-2" style="text-align:left;">
+                                        Online
+                                    </label>
+                                    <div class="col-md-2">
+                                        <select class="form-control" id="ddl_online">
+                                            <option value="1" selected>Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-horizontal">
+                                <div class="col-md-12" style="overflow: scroll;">
+                                    <table id="detailsTable" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center;">Action</th>
+                                                <th style="text-align:center;display:none">Bill Id</th>
+                                                <th style="text-align:center;">BillNo</th>
+                                                <th style="text-align:center;">Tax#</th>
+                                                <th style="text-align:center;">Supplier Bill#</th>
+                                                <th style="text-align:center;">Due Date</th>
+                                                <th style="text-align:center;">Rate</th>
+                                                <th style="text-align:center;">Amount</th>
+                                                <th style="text-align:center;">Paid</th>
+                                                <th style="text-align:center;">Balance</th>
+                                                <th style="text-align:center;">Payment</th>
+                                                <th style="text-align:center">WHT Percentage</th>
+                                                <th style="text-align:center;">WHT Amount</th>
+                                                <th style="text-align:center;">Net Amt</th>
+                                                <th style="text-align:center;">Net Balance</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody> </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@* Create Modal End *@
+
+
+
+<script src="~/FunctionJS/Purchase/Transaction/Payment.js?@Guid.NewGuid().ToString("n")"></script>

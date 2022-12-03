@@ -1,0 +1,93 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>INVENTORY DASHBOARD</h2>
+                </div>
+                <div class="col-md-8">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 1%;">
+    <div class="col-md-4 col-xs-4">
+        <div style="background-color:rgba(70, 144, 188, 1.0); color:white;padding: 2%">
+            <img id="img_box_readyfordelivery" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Ready For Delivery </p>
+            <h3 id="box_readyfordelivery" style="font-size:xx-large;text-align:center;"></h3>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-4">
+        <div style="background-color:rgba(70, 144, 188, 1.0); color:white;padding: 2%">
+            <img id="img_box_MinimumStockLevel" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Minimum Stock Level </p>
+            <h3 id="box_MinimumStockLevel" style="font-size:xx-large;text-align:center;"></h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+</div>
+
+
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Ready For Delivery </a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse1" title="Expend Production" id="readyfordelivery">
+                </a>    
+                <span style="font-size:small;" id="spn_ReadyforDelivery"
+                    class="badge badge-pill badge-secondary">0</span>
+
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+
+                <div id=div_readyfordelivery_inventory class="row" style="margin-bottom: 1%;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Minimum Stock Level</a>
+                 <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse2" title="Expend Production" id="minimumstocklevel">
+                </a>     
+                <span style="font-size:small;" id="spn_MinimumStockLevel" class="badge badge-pill badge-secondary">0</span>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+
+                <div id=div_MinimumStockLevel_inventory class="row" style="margin-bottom: 1%;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+@* </div> *@
+<script src='~/FunctionJS/Notification.js?@Guid.NewGuid().ToString("n")'></script>
+<script type="module" src='~/FunctionJS/Login/DashboardPermissionByName.js?@Guid.NewGuid().ToString("n")' async
+    defer></script>
+<script src='~/FunctionJS/Inventory/Card/ReadyfordeliveryCard.js?@Guid.NewGuid().ToString("n")'></script>
+<script src='~/FunctionJS/Inventory/Card/MinimumStockLevelCard.js?@Guid.NewGuid().ToString("n")'></script>

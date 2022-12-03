@@ -1,0 +1,99 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>UNCHECK DASHBOARD</h2>
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*Pending For Voucher / Bill Start*@
+<div class="row">
+    <div class="col-md-6 col-xs-6">
+        <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+            <img id="img_box_voucher" src="~/images/dashboard.GIF" />
+            <h4 style="font-weight:bold;">
+                Vouchers <span style="font-size:small;" id="spn_voucher_check"
+                    class="badge badge-pill badge-secondary">0</span>
+            </h4>
+            <table class="table table-striped" id="tbl_voucher_check" style="font-size:small; "></table>
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-6">
+        <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+            <img id="img_box_bill" src="~/images/dashboard.GIF" />
+            <h4 style="font-weight:bold;">
+                Bill <span style="font-size:small;" id="spn_bill_check"
+                    class="badge badge-pill badge-secondary">0</span>
+            </h4>
+            <table class="table table-striped" id="tbl_bill_check" style="font-size:small;">
+            </table>
+        </div>
+    </div>
+</div>
+@*Pending For Voucher / Bill End*@
+
+@*Debit Note /Payment Start*@
+<div class="row">
+    <div class="col-md-6 col-xs-6">
+        <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+            <img id="img_box_debitnote" src="~/images/dashboard.GIF" />
+            <h4 style="font-weight:bold;">
+                Debit Note <span style="font-size:small;" id="spn_debitnote_check"
+                    class="badge badge-pill badge-secondary">0</span></h4>
+            <table class="table table-striped" id="tbl_debitnote_check" style="font-size:small;">
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-6">
+        <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+            <img id="img_box_payment" src="~/images/dashboard.GIF" />
+            <h4 style="font-weight:bold;">
+                Payment<span style="font-size:small;" id="spn_payment_check"
+                    class="badge badge-pill badge-secondary">0</span></h4>
+            <table class="table table-striped" id="tbl_payment_check" style="font-size:small;">
+            </table>
+        </div>
+    </div>
+</div>
+@*Debit Note /Payment End*@
+
+@*Invoice / Received Start*@
+<div class="row">
+    <div class="col-md-6 col-xs-6">
+        <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+            <img id="img_box_invoice" src="~/images/dashboard.GIF" />
+            <h4 style="font-weight:bold;">
+                Invoice<span style="font-size:small;" id="spn_invoice_check"
+                    class="badge badge-pill badge-secondary">0</span></h4>
+            <table class="table table-striped" id="tbl_invoice_check" style="font-size:small;">
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-6">
+        <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+            <img id="img_box_received" src="~/images/dashboard.GIF" />
+            <h4 style="font-weight:bold;">
+                Received <span style="font-size:small;" id="spn_received_check"
+                    class="badge badge-pill badge-secondary">0</span></h4>
+            <table class="table table-striped" id="tbl_received_check" style="font-size:small;">
+            </table>
+        </div>
+    </div>
+</div>
+@*Invoice / Received End*@
+<script src='~/FunctionJS/Notification.js?@Guid.NewGuid().ToString("n")'></script>
+<script src="~/FunctionJS/GL/Report/Dashboard/UnCheckDashboad.js?@Guid.NewGuid().ToString("n")"></script>

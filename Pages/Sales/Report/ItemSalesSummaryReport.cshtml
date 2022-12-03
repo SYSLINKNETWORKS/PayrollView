@@ -1,0 +1,60 @@
+﻿@page
+@{
+    Layout = "_Layout_Report";
+}
+
+<!DOCTYPE html>
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Item Sales Summary</title>
+    <style>
+        thead {
+            color: green;
+        }
+
+        tbody {
+            color: blue;
+        }
+
+        tfoot {
+            color: red;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="x_content">
+            <div class="col-md-12 col-xs-12">
+                <div class="card-box table-responsive">
+                    <div class="col-md-3 col-xs-3">
+                        <label><a href="" id="btnPrint"> <span class="glyphicon glyphicon-print"></span></a></label>
+                        <label><a href="" id="btnExport"> <span class="glyphicon glyphicon-share"></span></a></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Print_Div" class="container">
+        <div class="x_content">
+            <div class="col-md-12 col-xs-12">
+
+                <div id=detail_table class="card-box table-responsive">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="~/FunctionJS/Sales/Report/ItemSalesSummary.js?@Guid.NewGuid().ToString("n")"></script>

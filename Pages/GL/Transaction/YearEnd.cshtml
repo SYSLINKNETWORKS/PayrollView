@@ -1,0 +1,79 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+
+
+
+<!DOCTYPE html>
+
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Year End<small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;"> 
+                            <input id="btn_end" type="button" value="End" onclick="yearend();" class="btn btn-success" />                           
+                </p>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="container">
+                <div class="x_content">
+                <div class="row">
+                    <div class="form-horizontal">
+                        <div class="col-md-12">
+
+                            
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Old Year
+                                </label>
+                                <div class="col-md-3">
+                                        <input type="text" id="txt_year_old" class="form-control" placeholder="Search Old Year" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    New Year
+                                </label>
+                                <div class="col-md-3">
+                                        <input type="text" id="txt_year_new" class="form-control" placeholder="Search New Year" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                   P & L Account
+                                </label>
+                                <div class="col-md-7">
+                                        <input type="text" id="txt_acc_pl" class="form-control" placeholder="Search Profit / Loss Account" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label>
+                                        <input id="ck_account" type="checkbox" class="icheck" data-checkbox="icheckbox_square-grey">Account
+                                    </label>
+                                    <label>
+                                        <input id="ck_inventory" type="checkbox" class="icheck" data-checkbox="icheckbox_square-grey">Inventory
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="~/FunctionJS/GL/Transaction/YearEnd.js?@Guid.NewGuid().ToString("n")"></script>

@@ -1,0 +1,95 @@
+@page
+@{
+    Layout = null;
+}
+
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <title> Attendance Mark </title>
+    <!-- Bootstrap -->
+    <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/fonts/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="~/css/custom.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="~/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script src="~/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="~/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="~/js/Swal.js"></script>
+    <script src="~/js/moment.min.js" type="text/javascript"></script>
+
+</head>
+@*style="background-color:#6191c2"*@
+
+<body>
+
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+        <div class="login_wrapper" style="text-align: center;">
+            <a href="#" class="site_title">
+                <img src="~/images/mmclogo.png" style="width: 100px; height:auto;">
+            </a>
+        </div>
+        <div class="login_wrapper">
+            <div id="div_log" class="animate form login_form"
+                style="background: white;    padding-right:   35px;padding-left:   35px;">
+                <section class="login_content">
+                    <h1>Attendance</h1>
+                    <div id="txterr" style="color:red;text-transform:uppercase;"></div>
+                    <div class="form-group">
+                        <input type="text" id="txtusername" class="form-control" placeholder="Username" required="" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="password" id="txtuserpassword" class="form-control" placeholder="Password"
+                            required="" />
+                    </div>
+                    <br />
+                    <div>
+                        @* <a id="btn_sub" class="btn btn-default submit" onclick=Login();>Log in</a> *@
+                        <a id="btn_sub" class="btn btn-default submit" onclick=GetLocationcheck();>Mark Attendance</a>
+
+                        <img id="img_load" src="~/images/Authenticating.GIF" />
+                        <div class="clearfix"></div>
+
+                    </div>
+                </section>
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+                @*<a class="reset_pass" href="#">Lost your password?</a>*@
+                <div class="clearfix"></div>
+                <br />
+                <div>
+                    <p id="footer_Mark">©2019 All Rights Reserved - MMC</p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    @using Microsoft.Extensions.Configuration
+    @inject IConfiguration Configuration
+    <script type="text/javascript">
+        var apiUrl = @Json.Serialize(@Configuration.GetSection("UrlAPI")["IFS"]);
+        var apiUrl_View = @Json.Serialize(@Configuration.GetSection("UrlAPI")["IFS_View"]);
+        var apiUrl_HD = @Json.Serialize(@Configuration.GetSection("UrlAPI")["HD"]);
+    </script>
+    <script src="~/FunctionJS/Login/MarkAttendance.js?@Guid.NewGuid().ToString("n")"></script>
+</body>
+
+</html>

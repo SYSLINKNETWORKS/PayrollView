@@ -1,0 +1,123 @@
+﻿@page
+@{
+    Layout = "_Layout_Report";
+}
+<!DOCTYPE html>
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div id="img_load" hidden>
+                <div style="text-align:center;" class="center">
+                    <img alt="" src="~/images/working.GIF" />
+                </div>
+            </div>
+            <div class="card card-custom">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="x_content">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="card-box table-responsive">
+                                    <div class="col-md-3 col-xs-3">
+                                        <label><a href="" id="btnPrint"> <span
+                                                    class="glyphicon glyphicon-print"></span></a></label>
+                                        <label><a href="" id="btnExport"> <span
+                                                    class="glyphicon glyphicon-share"></span></a></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Print_Div" class="container">
+                        <div class="x_content">
+                            <div class="col-md-12 col-xs-12">
+                                <div class="card-box table-responsive">
+                                    <!-- start project list -->
+                                    <table id="detail_table" class="table table-sm" style="font-size:smaller;">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="13" id="lbl_company_name"
+                                                    style="text-align:center;font-size:14pt;font-weight:bold;"></th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="13" id="lbl_head"
+                                                    style="text-align:center;font-variant-caps:all-petite-caps;font-size:12pt;font-weight:bold;">
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="13" id="lbl_usrprt"
+                                                    style="text-align:right;font-variant-caps:all-petite-caps;font-size:6pt;font-weight:bold;">
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th rowspan="2" style="vertical-align: middle; text-align: center;">S.NO
+                                                </th>
+                                                <th rowspan="2" style="vertical-align: middle; text-align: center;">Item
+                                                </th>
+                                                <th rowspan="2" style="vertical-align: middle; text-align: center;">Unit
+                                                </th>
+                                                <th rowspan="2" style="vertical-align: middle; text-align: center;">
+                                                    Opening</th>
+                                                <th colspan="2" style="text-align:center;">
+                                                    Purchase
+                                                </th>
+                                                <th colspan="2" style="text-align:center;">
+                                                    Production
+                                                </th>
+                                                <th colspan="2" style="text-align:center;">
+                                                    Adjustment
+                                                </th>
+                                                <th colspan="2" style="text-align:center;">
+                                                    Sales
+                                                </th>
+                                                <th rowspan="2" style="vertical-align: middle; text-align: center; ">
+                                                    Closing</th>
+
+                                            </tr>
+                                            <tr>
+                                                <th style="text-align:center;">
+                                                    Received
+                                                </th>
+                                                <th style="text-align:center;">
+                                                    Return
+                                                </th>
+                                                <th style="text-align:center;">
+                                                    Received
+                                                </th>
+                                                <th style="text-align:center;">
+                                                    Issue
+                                                </th>
+
+                                                <th style="text-align:center;">
+                                                    Received
+                                                </th>
+                                                <th style="text-align:center;">
+                                                    Issue
+                                                </th>
+
+                                                <th style="text-align:center;">
+                                                    Issue
+                                                </th>
+                                                <th style="text-align:center;">
+                                                    Return
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                    <!-- end project list -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end::Content-->
+        </div>
+        <!--end::Entry-->
+    </div>
+    <!--end::Content-->
+    <script src='~/FunctionJS/Inventory/Report/StockMovement.js?@Guid.NewGuid().ToString("n")'></script>

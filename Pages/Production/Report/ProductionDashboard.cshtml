@@ -1,0 +1,219 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>PRODUCTION DASHBOARD</h2>
+                </div>
+                <div class="col-md-8">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 1%;">
+    <div class="col-md-4 col-xs-4">
+        <div class="px-2" style="background-color: rgba(132, 89, 174, 0.9); color:white;padding: 2%">
+
+            <img id="img_box_total_joborder" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Total Job</p>
+            <h3 id="box_total_joborder" style="font-size:xx-large;text-align:center;"></h3>
+            @* <p id="box_total_joborder" style="font-size:large;"> 0</p> *@
+
+
+        </div>
+    </div>
+
+    <div class="col-md-4 col-xs-4">
+        <div class="px-2" style="background-color:rgba(225, 71, 74, 1.0); color:white;padding: 2%">
+           
+
+            <img id="img_box_production" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Open Job</p>
+            <h3 id="box_production" style="font-size:xx-large;text-align:center;"></h3>
+
+            @* <p id="box_production" style="font-size:large;"> 0</p> *@
+        </div>
+    </div>
+
+    <div class="col-md-4 col-xs-4">
+        <div style="background-color:rgba(70, 144, 188, 1.0); color:white;padding: 2%">
+            <div id="div_load_img"></div>
+            
+                <img id="img_box_readyfordelivery" src="~/images/dashboard.GIF" />
+
+            
+            <p style="font-size:large;"> Ready For Delivery </p>
+            <h3 id="box_readyfordelivery" style="font-size:xx-large;text-align:center;"></h3>
+        </div>
+    </div>
+
+    <div class=" clearfix">
+    </div>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+</div>
+
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Job Order</a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse1" title="Expend Production" id="joborder">
+                </a>
+                <span style="font-size:small;" id="spn_totaljoborder" class="badge badge-pill badge-secondary">0</span>
+
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 1%;">
+
+                    <div class="col-md-12 col-xs-12">
+                        <div class="bg-white"
+                            style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+
+                            <div id="div_joborder" style="text-align:right;">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Production</a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse2" title="Expend Production" id="production">
+                </a>
+                <span style="font-size:small;" id="spn_totalproduction"
+                    class="badge badge-pill badge-secondary">0</span>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 1%;">
+
+                    <div class="col-md-12 col-xs-12">
+                        <div class="bg-white"
+                            style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+
+                            <div id="div_joborderProduction" style="text-align:right;">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Ready For Delivery</a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse3" title="Expend Production" id="readyfordelivery">
+                </a>
+                <span style="font-size:small;" id="spn_ReadyforDelivery"
+                    class="badge badge-pill badge-secondary">0</span>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+
+                <div id=div_readyfordelivery_inventory class="row" style="margin-bottom: 1%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+<!-- Job Order Model-->
+<div class="modal fade" id="searchModeljoborder" role="dialog">
+    <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            NO
+                        </label>
+                        <div class="col-md-10">
+                            <input type="number" id="txt_nojoborder" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateFrom
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datFromjoborder'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateTo
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datTojoborder'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSearchjoborder" class="btn btn-default">Search</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<script src='~/FunctionJS/Notification.js?@Guid.NewGuid().ToString("n")'></script>
+<script type="module" src='~/FunctionJS/Login/DashboardPermissionByName.js?@Guid.NewGuid().ToString("n")' async
+    defer></script>
+<script src='~/FunctionJS/Production/Report/Dashboard/ProductionDashBoard.js?@Guid.NewGuid().ToString("n")'></script>
+<script type="module"
+    src="~/FunctionJS/Production/Report/Dashboard/MainDashboard.js?@Guid.NewGuid().ToString("n")"></script>
+<script src='~/FunctionJS/Inventory/Card/ReadyfordeliveryCard.js?@Guid.NewGuid().ToString("n")'></script>

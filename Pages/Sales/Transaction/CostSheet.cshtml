@@ -1,0 +1,750 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Cost Sheet <small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;"> <button id="btn_new" class="btn btn-info"> New</button></p>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="card-box table-responsive">
+                            <table id="Table_View" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width:15%">Action</th>
+                                        <th style="text-align:center">Quotation#</th>
+                                        <th style="text-align:center">Date</th>
+                                        <th style="text-align:center">Customer</th>
+                                        <th style="text-align:center">Salesman</th>
+                                        <th style="text-align:center">Item</th>
+                                        <th style="text-align:center">Quantity</th>
+                                        <th style="text-align:center">Colour</th>
+                                        <th style="text-align:center">Size</th>
+                                        <th style="text-align:center">Unit Rate</th>
+                                        <th style="text-align:center">Quoted Rate</th>
+                                        <th style="text-align:center">Status</th>
+                                        <th style="text-align:center">Quotation Approved</th>
+
+
+                                        @* <th style="text-align:center">Layout</th> *@
+                                        @* <th style="text-align:center">Quotation #</th> *@
+                                        @* <th style="text-align:center">Quotation Date</th> *@
+                                        @* <th style="text-align:center">Item</th> *@
+                                        @* <th style="text-align:center">Location</th> *@
+
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@* Create & Edit model start *@
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Cost Sheet</h4>
+            </div>
+            <form id="create_form">
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-8" style="text-align:left;">
+                                <input type="text" id="txt_rowid" style="display: none;">
+
+                            </label>
+                            <div class="col-md-2" id="txt_id" style="display: none;">
+                            </div>
+
+
+                            <div class="col-md-4" style="text-align:right;">
+                                <input id="btn_sav" type="button" value="Save" onclick="savrec()"
+                                    class="btn btn-success" />
+                                <input id="btn_update" type="button" value="Update" onclick="updrec()"
+                                    class="btn btn-warning" />
+                                <input id="btn_cls" type="button" value="Close" onclick="discon()"
+                                    class="btn btn-danger" data-dismiss="modal" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Date
+                            </label>
+                            <div class="col-md-3">
+                                <div class='input-group date' id='txt_dat'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Quotation
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" id="txt_pquo" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Item
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" id="txt_itm" class="form-control" />
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Customer
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="txt_cus" class="form-control" disabled />
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Location
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="txt_location" class="form-control" disabled />
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Previous Quotation
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" id="txt_previousquotation" class="form-control" />
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Board Size(MM) x
+                            </label>
+                            <div class="col-md-1">
+                                <input type="text" id="txt_bswidth" class="form-control" value="0" />
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Height y
+                            </label>
+                            <div class="col-md-1">
+                                <input type="text" id="txt_bsheight" value="0" class="form-control" />
+                            </div>
+
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                UPS
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="txt_bups" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Layout Size(MM)x
+                            </label>
+                            <div class="col-md-1">
+                                <input type="text" id="txt_lswidth" class="form-control" value="0" />
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Height y
+                            </label>
+                            <div class="col-md-1">
+                                <input type="text" id="txt_lsheight" value="0" class="form-control" />
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                UPS
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="txt_lups" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <table class="table table-striped table-bordered">
+                                    @* <tr>
+                                        <th style="text-align: center;" colspan="3">Description</th>
+
+                                        </tr>
+                                        <tr>
+                                        <th style="display: none;" colspan="3"></th>
+
+                                        </tr> *@
+                                    <tr>
+                                        <td>CUTTING MODE</td>
+                                        <td> <input type="text" id="txt_cuttingmode" class="form-control" value="0" />
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>GSM</td>
+                                        <td> <input type="text" id="txt_gsm" class="form-control" value="0" />
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>BOARD RATE(PER KG)</td>
+                                        <td> <input type="text" id="txt_boardrate" class="form-control" value="0" />
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>QUANTITY</td>
+                                        <td> <input type="text" id="txt_quantity" readonly class="form-control"
+                                                value="0" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>WASTAGE %</td>
+                                        <td> <input type="text" id="txt_wastage" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>COLORS</td>
+                                        <td> <input type="text" id="txt_colour" class="form-control" value="0"
+                                                disabled /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>PLATE RATE(UNIT)</td>
+                                        <td> <input type="text" id="txt_PLATERate" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>PRINTING RATE(1000)</td>
+                                        <td> <input type="text" id="txt_printingRate" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>UV(SQ.FT)</td>
+                                        <td> <input type="text" id="txt_uvsq" class="form-control" value="0" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>LAMINATION(SQ.FT)</td>
+                                        <td> <input type="text" id="txt_laminationsq" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIE-CUTTING(1000)</td>
+                                        <td> <input type="text" id="txt_diecutting" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>FOILING(UNIT)</td>
+                                        <td> <input type="text" id="txt_foilingunit" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>WINDOW PACTHING(UNIT)</td>
+                                        <td> <input type="text" id="txt_windowPacthingUnit" class="form-control"
+                                                value="0" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>PASTING(UNIT)</td>
+                                        <td> <input type="text" id="txt_pastingunit" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>BAG MAKING(UNIT)</td>
+                                        <td> <input type="text" id="txt_bagmakingunit" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>EYELET(UNIT)</td>
+                                        <td> <input type="text" id="txt_eyeletunit" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>HANGING WIRE(UNIT)</td>
+                                        <td> <input type="text" id="txt_hangingwireunit" class="form-control"
+                                                value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>PACKING(1000)</td>
+                                        <td> <input type="text" id="txt_packingper" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>TRANSPORT(1000)</td>
+                                        <td> <input type="text" id="txt_transportper" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>INCOME TAX(%)</td>
+                                        <td> <input type="text" id="txt_incometaxper" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>MARGIN(%)</td>
+                                        <td> <input type="text" id="txt_MARGINper" class="form-control" value="0" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><input type="button" id="btn_cal" class="btn btn-info" value="Calculation">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-striped table-bordered">
+
+                                    <tr>
+                                        <td>BOARD SIZE(inch)</td>
+                                        <td> <input type="text" id="txt_dboardsize" readonly class="form-control" />
+                                        </td>
+                                        <td> <input type="text" id="txt_dboardsizebyheight" readonly
+                                                class="form-control" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>LAYOUT SIZE(inch)</td>
+                                        <td> <input type="text" id="txt_dlayoutsize" readonly class="form-control" />
+                                        </td>
+                                        <td> <input type="text" id="txt_dlayoutsizebyheight" readonly
+                                                class="form-control" /> </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>AFTER WASTAGE QUANTITY</td>
+                                        <td> <input type="text" id="txt_afterwastageQuantity" readonly
+                                                class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>WEIGHT(PACKET)</td>
+                                        <td> <input type="text" id="txt_weightPacket" readonly class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>PACKET COST</td>
+                                        <td> <input type="text" id="txt_packetCost" readonly class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>REQUIRED PACKETS</td>
+                                        <td> <input type="text" id="txt_requiredPackets" readonly
+                                                class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>LAYOUT SHEET</td>
+                                        <td> <input type="text" id="txt_layoutsheet" readonly class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>BOARD TOTAL WEIGHT(KGS)</td>
+                                        <td> <input type="text" id="txt_boardtotalWeight" readonly
+                                                class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>BOARD</td>
+                                        <td> <input type="text" id="txt_board" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_board_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>PLATES</td>
+                                        <td> <input type="text" id="txt_Plates" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_Plates_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>PRINTING</td>
+                                        <td> <input type="text" id="txt_printing" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_printing_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UV</td>
+                                        <td> <input type="text" id="txt_uv" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_uv_per" readonly value=0
+                                                class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>LAMINATION</td>
+                                        <td> <input type="text" id="txt_lamination" readonly class="form-control" />
+                                        </td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_lamination_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIE-CUTTING</td>
+                                        <td> <input type="text" id="txt_die_Cutting" readonly class="form-control" />
+                                        </td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_die_Cutting_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>FOILING</td>
+                                        <td> <input type="text" id="txt_foiling" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_foiling_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>WINDOW PACTHING</td>
+                                        <td> <input type="text" id="txt_windowPatching" readonly class="form-control" />
+                                        </td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_windowPatching_per"
+                                                readonly value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>PASTING</td>
+                                        <td> <input type="text" id="txt_pasting" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_pasting_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>BAG MAKING</td>
+                                        <td> <input type="text" id="txt_bagmaking" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_bagmaking_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>EYELET</td>
+                                        <td> <input type="text" id="txt_eyelet" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_eyelet_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>HANGING WIRE</td>
+                                        <td> <input type="text" id="txt_hangingwire" readonly class="form-control" />
+                                        </td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_hangingwire_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>PACKING</td>
+                                        <td> <input type="text" id="txt_packing" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_packing_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TRANSPORT</td>
+                                        <td> <input type="text" id="txt_transport" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_transport_per" readonly
+                                                value=0 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TOTAL</td>
+                                        <td> <input type="text" id="txt_total" readonly class="form-control" /></td>
+                                        <td> <input style="width: 100px;" type="text" id="txt_total_per" readonly
+                                                value=100 class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>INCOME TAX</td>
+                                        <td> <input type="text" id="txt_incometax" readonly class="form-control" /></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>SUB TOTAL</td>
+                                        <td> <input type="text" id="txt_subtotal" readonly class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>MARGIN</td>
+                                        <td> <input type="text" id="txt_margin" readonly class="form-control" /></td>
+                                        @* <td> <input style="width: 100px;" type="text" id="txt_layoutsize"
+                                            class="form-control" /></td> *@
+                                    </tr>
+                                    <tr>
+                                        <td>GRAND TOTAL</td>
+                                        <td> <input type="text" id="txt_grandtotal" readonly class="form-control" />
+                                        </td>
+                                        @* <td> <input style="width: 100px;" type="text" id="txt_layoutsize"
+                                            class="form-control" /></td> *@
+                                    </tr>
+                                    <tr>
+                                        <td>UNIT COST</td>
+                                        <td> <input type="text" id="txt_unitCost" readonly class="form-control" /></td>
+                                        @* <td> <input style="width: 100px;" type="text" id="txt_layoutsize"
+                                            class="form-control" /></td> *@
+                                    </tr>
+                                    <tr>
+                                        <td>QUOTED RATE</td>
+                                        <td> <input type="text" id="txt_quotedRate" class="form-control" /></td>
+                                        @* <td> <input style="width: 100px;" type="text" id="txt_layoutsize"
+                                            class="form-control" /></td> *@
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <table class="table table-striped table-bordered" style="display: none;">
+                            <tr>
+                                <th style="text-align: center;" colspan="3">Description</th>
+
+                            </tr>
+
+                            <tr>
+                                <th style="display: none;" colspan="3"></th>
+
+                            </tr>
+                            <tr>
+                                <td>Quantity</td>
+                                <td> <input type="text" id="txt_tbl_qtydes" class="form-control" />
+                                </td>
+                                <td> <input type="text" id="txt_tbl_qtyrat" value="0" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>REQUIRED REAM</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_rrdes" class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_rrrat" value="0" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>COST OF PAPER @@ RS.</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_copdes" class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_coprat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SEPRATION @@ RS</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_sepdes" class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_seprat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>NO. OF PLATES @@ RS</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_nopdes" class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_noprat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PROOFING</td>
+                                <td>
+                                    @* <input type="text" id="txt_tbl_proofdes" class="form-control" /> *@
+                                </td>
+                                <td>
+                                    @* <input type="text" id="txt_tbl_proofrat" value="0" onclick="cal()"
+                                        class="form-control" /> *@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PAPER @@ RS.</td>
+                                <td> <input type="text" id="txt_tbl_paperdes" class="form-control" disabled />
+                                </td>
+                                <td> <input type="text" id="txt_tbl_paperrat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PRINTING @@ RS.</td>
+                                <td> <input type="text" id="txt_tbl_printdes" class="form-control" disabled />
+                                </td>
+                                <td> <input type="text" id="txt_tbl_printrat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>UV @@ RS.</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_uvdes" class="form-control" disabled />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_uvrat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>LAMINATION @@ RS.</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_lamdes" class="form-control" disabled />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_lamrat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>FOILING @@ RS.</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_foildes" class="form-control" disabled />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_foilrat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>DIE-CUTTING @@ RS.</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_dcdes" class="form-control" disabled />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_dcrat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>PASTING @@ RS.</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_pastdes" class="form-control" disabled />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_pastrat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>EYELET @@ RS.</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_eyedes" class="form-control" disabled />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_eyerat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SUBLET @@ RS.</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_subdes" class="form-control" disabled />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_subrat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>PACKING @@ RS.</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_packdes" class="form-control" disabled />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_packrat" value="0" onkeyup="cal()"
+                                        class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SUB TOTAL</td>
+                                <td>
+                                    @* <input type="text" id="txt_tbl_stotaldes" class="form-control" /> *@
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_stotal" value="0" class="form-control" disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SALES TAX</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_staxdes" onkeyup="gtotal()" value="0"
+                                        class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_staxrat" value="0" class="form-control" disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>GROSS TOTAL</td>
+                                <td>
+                                    @* <input type="text" id="txt_tbl_stotaldes" class="form-control" /> *@
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_grosstotal" value="0" class="form-control"
+                                        disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>INCOME TAX</td>
+                                <td>
+                                    <input type="text" id="txt_tbl_itaxdes" value="0" onkeyup="incometax()"
+                                        class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_itaxrat" value="0" class="form-control" disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">GRAND TOTAL</td>
+                                <td>
+                                    @* <input type="text" id="txt_tbl_gtotaldes" class="form-control" /> *@
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_gtotal" value="0" class="form-control" disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">UNIT PRICE</td>
+                                <td>
+                                    @* <input type="text" id="txt_tbl_upricedes" class="form-control" /> *@
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_uprice" value="0" class="form-control" disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">PRICE QUOTED</td>
+                                <td>
+                                    @* <input type="text" id="txt_tbl_price_quotedes" class="form-control" /> *@
+                                </td>
+                                <td>
+                                    <input type="text" id="txt_tbl_price_quote" class="form-control" />
+                                </td>
+                            </tr>
+                            @* <tr>
+                                <td style="text-align: center;">PRICE APPROVED BY CLIENT</td>
+                                <td>
+                                <input type="text" id="txt_tbl_price_apprdes" class="form-control" />
+                                </td>
+                                <td>
+                                <input type="text" id="txt_tbl_price_appr" class="form-control" />
+                                </td>
+                                </tr> *@
+
+                        </table>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@* Create & Edit model start *@
+<script src="~/FunctionJS/Sales/Transaction/CostSheet.js?@Guid.NewGuid().ToString("n")"></script>

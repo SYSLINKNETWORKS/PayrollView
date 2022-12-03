@@ -1,0 +1,137 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Configuration Criteria <span id="creheading"></span></h2>
+            <div class="clearfix"></div>
+            <input type="hidden" id="reportid" />
+        </div>
+        <div class="container">
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="text-align:left;">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <input type="submit" value="View" id="btn_view">
+                                            <input type="reset" value="Cancel">
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="Audit" onclick="discon(1)">
+                                                Audit </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+
+                                    <!--date from to start-->
+                                    <div id="div_datefromto">
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                From
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class='input-group date' id='txt_dat_frm'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                To
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class='input-group date' id='txtdate_to'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                   
+                                    <div id="div_userConfiguration">
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                User
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_user" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <div id="div_actionConfiguration">
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Action
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_action" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="div_menuConfiguration">
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Menu
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_menu" class="form-control">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div id="div_valueConfiguration">
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Old Value
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_oldvalue" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                New Value
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_newvalue" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<script src="~/FunctionJS/Configuration/Report/ConfigurationCriteria.js?@Guid.NewGuid().ToString("n")"></script>

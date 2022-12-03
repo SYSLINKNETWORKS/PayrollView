@@ -1,0 +1,431 @@
+@page
+@{
+    Layout = "_Layout";
+}  
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Payroll  Criteria <span id="creheading"></span></h2>
+            <div class="clearfix"></div>
+            <input type="hidden" id="reportid" />
+        </div>
+        <div class="container">
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="text-align:left;">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <input type="submit" value="View" id="btn_view">
+                                            <input type="reset" value="Cancel">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="AttendanceProcess" id="btn_process"
+                                                onclick="ProcessAttendance();">
+                                        </div>
+                                        <div class="form-group">
+
+                                            <a id="singleDayofAttandance" onclick="discon(1)">Single Day of
+                                                Attandance</a>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <a id="MonthofAttandance" onclick="discon(2)">Month of Attandance</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="TimeSheet" onclick="discon(3);">Time Sheet</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="Inn_out_editor" onclick="discon(4);">Inn-Out-Editor</a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a id="absent" onclick="discon(5);">Absent</a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a id="dailyattandance" onclick="discon(6);">Daily Attandance</a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a id="overTime" onclick="discon(7);">Over Time</a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a id="EmployeProfile" onclick="discon(8);">Employee Profile</a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a id="DateofJoin" onclick="discon(9);">Employee Date of Join</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="Advance" onclick="discon(10);">Advance</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="Loan" onclick="discon(11);">Loan</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="LoanRecive" onclick="discon(12);">Loan Recieve</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="Salary" onclick="discon(13);">Salary</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="SalaryIncrement" onclick="discon(14);">Salary Increment</a>
+                                        </div>
+                                        <div class="form-group" hidden>
+                                            <a id="Eobi" onclick="discon(15);">EOBI</a>
+                                        </div>
+                                        <div class="form-group" hidden>
+                                            <a id="Sessi" onclick="discon(16);">SESSI</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="Leave" onclick="discon(17);">Leave</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                    <!--date as on start-->
+                                    <div id="div_dateason">
+                                        <div class="form-group" id="">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                As On Date
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <div class='input-group date' id='txt_dat_ason'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--date as on end-->
+
+                                    <!--date from to start-->
+                                    <div id="div_datefromto">
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Month
+                                            </label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select id="ddl_month" class="form-control"
+                                                    onchange="getMonth(this.options[this.selectedIndex].value)"
+                                                    style="height: 30px;">
+                                                    <option value="-1" selected>All</option>
+                                                    <option value="1">January</option>
+                                                    <option value="2">February</option>
+                                                    <option value="3">March</option>
+                                                    <option value="4">April</option>
+                                                    <option value="5">May</option>
+                                                    <option value="6">June</option>
+                                                    <option value="7">July</option>
+                                                    <option value="8">August</option>
+                                                    <option value="9">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                From
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class='input-group date' id='txt_dat_frm'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                To
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class='input-group date' id='txtdate_to'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--date from to End-->
+
+                                    <!--Common div Start-->
+                                    <div id="div_common">
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Branch
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txtbranch" class="form-control"
+                                                    placeholder="Branch">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="div_absent">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Report Type
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_daily_absent" class="form-control"
+                                                    style="height: 30px;">
+                                                    <option value="1" selected>Daily Absent</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        @* <div class="form-group" id="div_salary_inrement">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Report Type
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_salaryIncreament" class="form-control"
+                                                    style="height: 30px;">
+                                                    <option value="1" selected>salary Increment</option>
+                                                    <option value="2" selected>Current Salaries</option>
+                                                </select>
+                                            </div>
+                                        </div>
+ *@
+
+
+
+                                        <div class="form-group" id="div_employeeProfile">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Report Type
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_daily_absent" class="form-control"
+                                                    style="height: 30px;">
+                                                    <option value="1" selected>Employee Profile </option>
+                                                    <option value="2" selected>Employee Profile List </option>
+                                                </select>
+                                            </div>
+                                            <br><br>
+
+
+                                        </div>
+
+                                        <div class="form-group" id="div_advance">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Report Type
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_daily_absent" class="form-control"
+                                                    style="height: 30px;">
+                                                    <option value="1" selected>Summary </option>
+                                                    <option value="2" selected>Report </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="div_loan">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                               Status
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_loan_status" class="form-control"
+                                                    style="height: 30px;">
+                                                    <option value="1" selected>In-Process </option>
+                                                    <option value="2" selected>Complete </option>
+                                                    <option value="3" selected>All </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Office Worker
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_office_worker" class="form-control"
+                                                    style="height: 30px;">
+                                                    <option value="1" selected>---Select---</option>
+                                                    <option value="Office">Office</option>
+                                                    <option value="Worker">Worker</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Group
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_group" class="form-control" style="height: 30px;">
+                                                    <option value="-1" selected>---Select---</option>
+                                                    <option value="1">Category</option>
+                                                    <option value="2">Designation</option>
+                                                    <option value="3">Department</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Temp./Permanent
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_TemporaryPermanent" class="form-control"
+                                                    style="height: 30px;">
+
+                                                    <option value="1">Both</option>
+                                                    <option value="Permanent">Permanent</option>
+                                                    <option value="Temporary">Temporary</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Designation
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txtdesignation" class="form-control"
+                                                    placeholder="Designation">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Department
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txtdepartment" class="form-control"
+                                                    placeholder="Department">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Active
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_Active" class="form-control" style="height: 30px;">
+                                                    <option value="0" selected>---select--- </option>
+                                                    <option value="1">Yes </option>
+                                                    <option value="2">No </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Employee
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txtemployee" class="form-control"
+                                                    placeholder="Employee">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Gender
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_gender" class="form-control" style="height: 30px;">
+
+                                                    <option value="1" selected>---Select---</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="loanRecieve">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Completed
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_gender" class="form-control" style="height: 30px;">
+                                                    <option value="1">Completed</option>
+                                                    <option value="2">In-Completed</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="ReportType">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                ReportType
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_reportType" class="form-control" style="height: 30px;">
+                                                    @* <option value="1">Detail</option>
+                                                        <option value="2">Salary Slip</option>
+                                                        <option value="3">Summary </option>
+                                                        <option value="4">Envalop</option>
+                                                        <option value="5">Recieving Sheet</option> *@
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div id="div_employeeJoin">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Active
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_daily_absent" class="form-control"
+                                                    style="height: 30px;">
+                                                    <option value="-1" selected>---select--- </option>
+                                                    <option value="1" selected>Yes </option>
+                                                    <option value="2" selected>No </option>
+                                                    <option value="3" selected>Both </option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Common div End-->
+                                </div>
+
+                                <div class="form-group" id="ck_summary">
+                                    <input type="checkbox">Summary
+                                </div>
+
+                                <div class="form-group" id="ck_eobi">
+                                    <input type="checkbox">E.O.B.I List
+                                </div>
+
+                                <!--Single Day of Attandance End-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/FunctionJS/Payroll/Report/PayrollCreteria.js?@Guid.NewGuid().ToString("n")"></script>

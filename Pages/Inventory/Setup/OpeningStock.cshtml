@@ -1,0 +1,116 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+
+
+<!DOCTYPE html>
+
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="modal-content">
+            <div>
+
+                <h2>
+                    Opening Stock
+                </h2>
+            </div>
+            <div style="margin-top:40px">
+
+            </div>
+            <form id="create_form">
+                <div class="row">
+                    <div class="form-horizontal">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:center;">
+                                    Item
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_itm" class="form-control" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Warehouse
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_warehouse" class="form-control" />
+                                </div>
+
+
+
+                            </div>
+                            <div class="form-group">
+
+                                <label class="control-label col-md-2" style="text-align:center;">
+                                    Qty
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_qty" value="0" class="form-control" />
+                                </div>
+
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Rate
+                                </label>
+                                <div class="col-md-3">
+                                    <input type="text" id="txt_rate" value="0" class="form-control" />
+                                </div>
+
+                                <div class="col-md-1">
+                                    <input id="btn_addDetail" type="button" value=" Add"
+                                        class="btn btn-info" />
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-12">
+                                @*Order Details*@
+                                @* <h5
+                                    style="margin-top:10px;color:#ff6347;text-align:center;font-weight:900;"><u>Details</u></h5>
+                                *@
+                                @*<hr />*@
+                                <div style="overflow-x:scroll">
+                                    <table id="detailsTable" class="table table-striped table-bordered">
+                                        <thead style="text-align:center">
+                                            <tr>
+                                                <th>Action</th>
+                                                <th style="display: none;">ItemId</th>
+                                                <th>Item</th>
+                                                <th style="display: none;">Warehouseid</th>
+                                                <th>Warehouse</th>
+                                                <th>Qty</th>
+                                                <th>Rate</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+@* Create Modal Start *@
+
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important; margin-top:6%; ">
+
+    </div>
+</div>
+@* Create Modal End @*@
+<script src="~/FunctionJS/Inventory/Setup/OpeningStock.js?@Guid.NewGuid().ToString("n")"></script>

@@ -1,0 +1,96 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+
+<!DOCTYPE html>
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2>Staff Salary Process</h2>
+                    </div>
+                    <div class="col-md-4">
+                        <div class='input-group date' id='txt_Date'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4"  id="div_VoucherPost">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="btn_salarygenerate" class="btn btn-warning"> Generate</button>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="btn_salaryview" class="btn btn-info"> View</button>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="btn_salaryprint" class="btn btn-info"> Print</button>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+
+                        <div class="col-md-1">
+                            <button id="btn_salaryslipprint" class="btn btn-info"> Print Slip</button>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="btn_salarypostvoucher" class="btn btn-danger"> Post Voucher</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="card-box table-responsive">
+
+                                <table id="Table_View" class="table table-striped table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Net Salary</th>
+                                            <th>Process Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <!-- end project list -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/FunctionJS/Payroll/Transaction/SalaryStaffProcess.js?@Guid.NewGuid().ToString("n")"></script>

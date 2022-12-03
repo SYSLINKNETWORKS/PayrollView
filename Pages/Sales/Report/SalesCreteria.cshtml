@@ -1,0 +1,232 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Sales Criteria <span id="creheading"></span></h2>
+            <div class="clearfix"></div>
+            <input type="hidden" id="reportid" />
+        </div>
+        <div class="container">
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="text-align:left;">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <input type="submit" value="View" id="btn_view">
+                                            <input type="reset" value="Cancel">
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="salesQuotaion" onclick="discon(1)">
+                                                Quotation </a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="costSheet" onclick="discon(2)">
+                                                Cost Sheet </a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="saleorder" onclick="discon(3)">
+                                                Sale Order </a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="dc" onclick="discon(4)">
+                                                Delivery Challan </a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="invoice" onclick="discon(5)">
+                                                Invoice Report </a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="receipt" onclick="discon(6)">
+                                                Receipt Report </a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a id="creditnote" onclick="discon(7)">
+                                                Credit Note Report </a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="aging" onclick="discon(8)">
+                                                Aging Report </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                    @* Salesman *@
+                                    <div id="div_salesman">
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Salesman
+                                            </label>
+                                            <div class="col-md-10">
+                                                <input type="text" id="txt_slsman" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--date as on start-->
+                                    <div id="div_dateason">
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                As On Date
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <div class='input-group date' id='txt_dat_ason'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--date as on end-->
+
+                                    <!--date from to start-->
+                                    <div id="div_datefromto">
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                From
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class='input-group date' id='txt_dat_frm'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                To
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class='input-group date' id='txtdate_to'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--date from to End-->
+                                    @* ID *@
+                                    <div id="div_no">
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                No
+                                            </label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="number" id="txt_no" placeholder="write number"
+                                                    class="form-control">
+                                            </div>
+                                            <label id="lbl_customerPo"
+                                                class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Customer PO No
+                                            </label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" id="txt_customerpono" placeholder="write customer Po No"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    @* Report Type *@
+                                    <div id="div_reporttype">
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Report Type
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <select id="ddl_reporttype">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @* Customer *@
+                                    <div id="div_customer">
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Customer-Category
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_customerCategory" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Customer
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_customer" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="div_item">
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Item-Category
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_itemCategory" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Brand
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_brand" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Sub-Category
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_itemSubCategory" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Item
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_item" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<script src="~/FunctionJS/Sales/Report/SalesCreteria.js?@Guid.NewGuid().ToString("n")"></script>

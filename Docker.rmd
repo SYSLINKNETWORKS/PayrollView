@@ -1,0 +1,6 @@
+docker build -t teamwork_view .
+docker run -d -p 8080:80 --name twpview teamwork_view
+docker save -o .\Images\teamwork_view.tar teamwork_view
+
+
+#docker run -dit --name dkanwebserver308 -p 308:80 dkanwebserver:v1

@@ -1,0 +1,893 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+
+
+<!DOCTYPE html>
+
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Employee Profile<small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;"> <button id="btn_new" class="btn btn-info"> New</button></p>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="container">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="card-box table-responsive">
+
+                                <!-- start project list -->
+                                <table id="Table_View" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;">Action</th>
+                                            <th>S#</th>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>Father Name</th>
+                                            <th>Reporting Officer</th>
+                                            <th>Join Date</th>
+                                            <th>Designation</th>
+                                            <th>Department</th>
+                                            <th>Active</th>
+                                            <th>Resign</th>
+                                            <th>Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                                <!-- end project list -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- @* Create Modal Start *@ -->
+
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="!important; margin-top:6%; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Employee Profile</h4>
+                <div id="img_load_sav" style="width:100%;text-align:center;">
+                    <img src="~/images/working.GIF" />
+                </div>
+            </div>
+            <form id="create_form">
+                <div class="row">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-9"></div>
+                            <div class="col-md-3" style="text-align:right;">
+                                <input id="btn_sav" type="button" value="Save" onclick="savrec()"
+                                    class="btn btn-success" />
+                                <input id="btn_upd" type="button" value="Update" onclick="updrec()"
+                                    class="btn btn-warning" />
+                                <input id="btn_cls" type="button" value="Close" onclick="discon()"
+                                    class="btn btn-danger" data-dismiss="modal" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#PersonalTab">Personal</a></li>
+                                    <li><a href="#SalaryTab">Salary</a></li>
+                                    <li><a href="#QualificationTab">Qualification</a></li>
+                                    <li><a href="#ExperienceTab">Experience</a></li>
+                                    <li><a href="#AllowanceTab">Allowance</a></li>
+                                    <li><a href="#OtherDetailsTab">Other Details</a></li>
+                                    <li><a href="#AttachmentTab">Attachment</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+
+                            <div id="PersonalTab" class="tab-pane fade in active"> @*Pesonal *@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Card No
+                                        </label>
+                                        <div class="col-md-2">
+                                            <label class="control-label" id="txt_id" style="text-align:left;" hidden>
+                                            </label>
+                                            <input type="text" id="txt_cardno" class="form-control" value="0" />
+                                        </div>
+                                        <label class="col-md-2">
+                                            Active
+                                        </label>
+                                        <div class="col-md-2">
+                                            <select id="ddl_Active">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group ">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Branch
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_branch" class="form-control" />
+                                        </div>
+                                        <label class="control-label col-md-2 " style="text-align:left;">
+                                            Type
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_employeeCategory" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-2">
+                                            Office/Worker
+                                        </label>
+                                        <div class="col-md-2">
+                                            <select id="ddl_OfficeStaff">
+                                                <option value="0" selected>---Select---</option>
+                                                <option value="Office">Office</option>
+                                                <option value="Worker">Worker</option>
+                                            </select>
+                                        </div>
+
+                                        <label class="col-md-2">
+                                            Gender
+                                        </label>
+                                        <div class="col-md-2">
+                                            <select id="ddl_Gender">
+                                                <option value="0" selected>---Select---</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                        </div>
+                                        <label class="col-md-2">
+                                            Martial Status
+                                        </label>
+                                        <div class="col-md-2">
+                                            <select id="ddl_MaritalStatus">
+                                                <option value="0" selected>---Select---</option>
+                                                <option value="Married">Married</option>
+                                                <option value="Unmarried">Un-Married</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="col-md-2" style="text-align:left;">
+                                                Permanent/Temp
+                                            </label>
+                                            <div class="col-md-2">
+                                                <select id="ddl_TP" onchange="TemporaryPermanent();">
+                                                    <option value="0" selected>---Select---</option>
+                                                    <option value="Temporary">Temporary</option>
+                                                    <option value="Permanent">Permanent</option>
+                                                </select>
+                                            </div>
+                                            <div id=div_Permanent>
+                                                <label class="col-md-4">
+                                                    Date of Parmanent
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <div class='input-group date' id='txt_dop'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar">
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id=div_Temporary>
+                                                <label class="col-md-4">
+                                                    Period
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txt_Temporary_Period" class="form-control"
+                                                        value="0" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Designation
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_designation" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Department
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_department" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Name
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_Name" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Father Name
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_fatherName" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Present Add
+                                            </label>
+                                            <div class="col-md-4">
+                                                <textarea id="txt_Address" rows="4" class="form-control"></textarea>
+                                            </div>
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Permanent Add
+                                            </label>
+                                            <div class="col-md-4">
+                                                <textarea id="txt_AddressPermanent" rows="4"
+                                                    class="form-control"></textarea>>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group ">
+                                            <label class="control-label col-md-2 " style="text-align:left;">
+                                                Date of Birth
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class='input-group date' id='txt_dateOfBirth'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-md-2 " style="text-align:left;">
+                                                Roster
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_roster" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                C.N.I.C
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_cnic" class="form-control"
+                                                    placeholder="XXXXX-XXXXXXX-X" maxlength="13" />
+                                            </div>
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                C.N.I.C Exp
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class='input-group date' id='txt_cnicexp'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Cell#
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_cell" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                N.T.N
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_ntn" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Email
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_email" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Remarks
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_remark" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Emergency Contact 1
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_emergencyContactOne" class="form-control" />
+                                            </div>
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                                Emergency Contact 2
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txt_emergencyContactTwo" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div id="SalaryTab" class="tab-pane fade"> @*Salary *@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Date of Joining:
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class='input-group date' id='txt_doj'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar">
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="control-label col-md-2" style="text-align:left;">
+                                           Reporting Officer
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_reportOfficer" class="form-control" />
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Annual Leave:
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_annualLeave" class="form-control" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group ">
+                                        <label class="control-label col-md-3" style="text-align:left;">
+                                            Mode of Payment:
+                                        </label>
+                                        <div class="col-md-4">
+                                            <select id="ddl_ModeOfPayment">
+                                                <option value="Cash" selected>Cash</option>
+                                                <option value="Bank">Chq</option>
+                                                <option value="Online">Online</option>
+                                            </select>
+                                        </div>
+                                        <label class="col-md-2">
+                                            Salary Account
+                                        </label>
+                                        <div class="col-md-3">
+                                            <input type="text" id="txt_salaryAccount" class="form-control" />
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Takaful
+                                        </label>
+                                        <div class="col-md-2">
+                                            <input type="text" id="txt_takaful" class="form-control" value="0" />
+                                        </div>
+                                        @* <div class="icheck-inline col-md-4" style="text-align:right;">
+
+                                            <label>
+                                            <input id="ck_overtime" type="checkbox" class="icheck"
+                                            data-checkbox="icheckbox_square-grey"> Over Time
+                                            </label>
+
+                                            </div> *@
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Over Time
+                                        </label>
+                                        <select id="ddl_OverTime" class="col-md-2">
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Rate
+                                        </label>
+                                        <div class="col-md-2">
+                                            <input type="text" id="txt_overtimerate" class="form-control" value="0" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Gratuity
+                                        </label>
+                                        <select id="ddl_Gratuity" class="col-md-2">
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+
+
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Authorized
+                                        </label>
+
+                                        <select id="ddl_Authorized" class="col-md-2">
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+
+
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Income Tax
+                                        </label>
+                                        <select id="ddl_IncomeTax" class="col-md-2">
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+
+
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Stop Payment
+                                        </label>
+                                        <select id="ddl_StopPayment" class="col-md-2">
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Attendance Exemption
+                                        </label>
+                                        <select id="ddl_attendanceExemption" class="col-md-2">
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Attendance Allowance
+                                        </label>
+                                        <select id="ddl_attendanceAllowance" class="col-md-2">
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Late Deduction
+                                        </label>
+                                        <select id="ddl_LateDeduction" class="col-md-2">
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Holiday Overtime
+                                        </label>
+                                        <select id="ddl_HolidayOvertime" class="col-md-2">
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Factory Overtime
+                                        </label>
+                                        <select id="ddl_FactoryOvertime" class="col-md-2">
+                                            <option value="0" selected>No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Resign
+                                        </label>
+                                        <div class="col-md-2">
+                                            <select id="ddl_Resign">
+                                                <option value="N" selected>No</option>
+                                                <option value="R">Yes</option>
+                                            </select>
+                                        </div>
+                                        <label class="control-label col-md-4">
+                                            Date of Resign:
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class='input-group date' id='txt_dat_reg'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar">
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" style="text-align:left;">
+                                            Resign Remarks
+                                        </label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="txt_resignRemark" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            S.E.S.S.I #
+                                        </label>
+                                        <div class="col-md-2">
+                                            <input type="text" id="txt_sessi" class="form-control" />
+                                        </div>
+                                        <label class="control-label col-md-4">
+                                            Date of S.E.S.S.I
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class='input-group date' id='txt_dat_sesi'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar">
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            E.O.B.I#:
+                                        </label>
+                                        <div class="col-md-2">
+                                            <input type="text" id="txt_eobi" class="form-control" />
+                                        </div>
+                                        <label class="control-label col-md-4">
+                                            Date of E.O.B.I:
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class='input-group date' id='txt_dat_eobi'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar">
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div id="QualificationTab" class="tab-pane fade"> @* Qualification *@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Institute
+                                        </label>
+                                        <div class="col-md-10">
+                                            <input type="text" id="txt_institute" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Qualification
+                                        </label>
+                                        <div class="col-md-10">
+                                            <input type="text" id="txt_qualification" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            Year
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class='input-group date' id='txt_qualificationYear'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar">
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Remarks
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_qualificationRemark" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="ExperienceTab" class="tab-pane fade"> @* Experince *@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Company:
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_ExperianceCompany" class="form-control" />
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Designation:
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_ExperianceDesignation" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            From
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class='input-group date' id='txt_experiance_from'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar">
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            to
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class='input-group date' id='txt_experiance_to'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar">
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Remarks
+                                        </label>
+                                        <div class="col-md-10">
+                                            <input type="text" id="txt_experianceRemark" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="AllowanceTab" class="tab-pane fade"> @* Allowance *@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="container-fluid">
+                                            <table class="table table-striped col-md-12">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Allowance</th>
+                                                        <th>Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="OtherDetailsTab" class="tab-pane fade"> @* Other Details *@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-4"> <b>Reference 1</b></div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-4"> <b>Reference 2</b></div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Name
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_refNameOne" class="form-control" />
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Name
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_refNameTwo" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            CNIC NO
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_refCnicOne" class="form-control"
+                                                placeholder="XXXXX-XXXXXXX-X" maxlength="13" />
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            CNIC NO
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_refCnicTwo" class="form-control"
+                                                placeholder="XXXXX-XXXXXXX-X" maxlength="13" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Address
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_refAddressOne" class="form-control" />
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Address
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_refAddressTwo" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Contact
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_refcontactOne" class="form-control" />
+                                        </div>
+                                        <label class="control-label col-md-2" style="text-align:left;">
+                                            Contact
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txt_refcontactTwo" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="AttachmentTab" class="tab-pane fade"> @* Attachment *@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-md-2 col-form-label">
+                                                    Document Name
+                                                </label>
+                                                <div class="col-md-6">
+                                                    <input class="form-control" id="txt_imgname" type="text">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="ck_ProfileCheckBox">
+                                                    <label class="form-check-label" for="ck_ProfileCheckBox">
+                                                        Profile
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <button type="button" id="btnAddImg"
+                                                        class="btn btn-dark pl-5 pr-5">Add</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label class="col-md-2 col-form-label">
+                                            Image
+                                        </label>
+                                        <div class="col-md-8">
+                                            <input id="ImageUpload1" type='file' onchange="readURL(this);" multiple
+                                                accept="*/*" />
+                                            <img id="img" height="150" width="200" style="display:none">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <table id="AttachmentTable" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align:center;">Action</th>
+                                                    <th>ImageName</th>
+                                                    <th>Image</th>
+                                                    <th hidden>Byte</th>
+                                                    <th hidden>ImageType</th>
+                                                    <th>Profile</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- @* Create Modal End *@ -->
+
+<script src="~/FunctionJS/Payroll/Setup/EmployeeProfile.js?@Guid.NewGuid().ToString("n")"></script>

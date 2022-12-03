@@ -1,0 +1,419 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+
+
+<!DOCTYPE html>
+
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Roster Group<small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;"> <button id="btn_new" class="btn btn-info"> New</button></p>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="container">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="card-box table-responsive">
+
+                                <!-- start project list -->
+                                <table id="Table_View" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;">Action</th>
+                                            <th>S#</th>
+                                            <th>Roster</th>
+                                            <th>Date</th>
+                                            <th>Late Coming</th>
+                                            <th>Overtime After</th>
+                                            <th>Working Hours</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <!-- end project list -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- @* Create Modal Start *@ -->
+
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="!important; margin-top:6%; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Roster Group</h4>
+                <div id="img_load_sav" style="width:100%;text-align:center;">
+                    <img src="~/images/working.GIF" />
+                </div>
+            </div>
+            <form id="create_form">
+                <div class="row">
+                    <div class="form-horizontal">
+                        <div class="col-md-12" style="text-align:right;">
+                            <input id="btn_sav" type="button" value="Save" onclick="savrec();"
+                                class="btn btn-success" />
+                            <input id="btn_upd" type="button" value="Update" onclick="updrec();"
+                                class="btn btn-warning" />
+                            <input id="btn_cls" type="button" value="Close" onclick="discon()" class="btn btn-danger"
+                                data-dismiss="modal" />
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    ID
+                                </label>
+                                <div class="col-md-4">
+                                    <label class="control-label" id="txt_id" style="text-align:left;">
+                                    </label>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Date
+                                </label>
+                                <div class="col-md-4">
+                                    <div class='input-group date' id='txt_dat'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2"> -->
+                                <!-- <label class="control-label col-md-2" style="text-align:left;">
+                                Date
+                                </label>
+                                <div class="col-md-4">
+                                    <div class='input-group date' id='txt_dat'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div> -->
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Roster
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="text" placeholder="Enter % to Search Roaster" id="txt_roster"
+                                        class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Late Coming
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="number" id="txt_latcom" class="form-control" value="0" min="0"/>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Early Going
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="number" id="txt_Eargo" class="form-control"  value="0" min="0"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Over Time After
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="number" id="txt_ovtimaft" class="form-control"  value="0" min="0" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Working Hours
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="number" id="txt_wrkhr" class="form-control"  value="0" min="0" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Morning Working Hours
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="number" id="txt_morwrkhr" class="form-control"  value="0" min="0" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Evening Working Hours
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="number" id="txt_evwrkhr" class="form-control"  value="0" min="0" />
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <!-- Monday -->
+                            <div class="form-group">
+                                <div class="icheck-inline col-md-2">
+                                    <label>
+                                        <input id="ck_mon" type="checkbox" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Monday
+                                    </label>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    In-Time
+                                </label>
+                                <div class="col-md-3">
+                                     <div class='input-group date' id='txt_monintime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar ">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Out-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_monouttime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tuseday -->
+                            <div class="form-group">
+                                <div class="icheck-inline col-md-2">
+                                    <label>
+                                        <input id="ck_tus" type="checkbox" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Tuseday
+                                    </label>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    In-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_tusintime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Out-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_tusouttime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Wednesday -->
+                            <div class="form-group">
+                                <div class="icheck-inline col-md-2">
+                                    <label>
+                                        <input id="ck_Wed" type="checkbox" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Wednesday
+                                    </label>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    In-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_wedintime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Out-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_wedouttime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Thursday -->
+                            <div class="form-group">
+                                <div class="icheck-inline col-md-2">
+                                    <label>
+                                        <input id="ck_thurs" type="checkbox" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Thursday
+                                    </label>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    In-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_thrintime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Out-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_throuttime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Friday -->
+                            <div class="form-group">
+                                <div class="icheck-inline col-md-2">
+                                    <label>
+                                        <input id="ck_Fri" type="checkbox" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Friday
+                                    </label>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    In-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_Friintime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Out-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_Friouttime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Saturday -->
+                            <div class="form-group">
+                                <div class="icheck-inline col-md-2">
+                                    <label>
+                                        <input id="ck_Sat" type="checkbox" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Saturday
+                                    </label>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    In-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_Satintime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Out-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_Satouttime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Sunday -->
+                            <div class="form-group">
+                                <div class="icheck-inline col-md-2">
+                                    <label>
+                                        <input id="ck_Sun" type="checkbox" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Sunday
+                                    </label>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    In-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_Sunintime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Out-Time
+                                </label>
+                                <div class="col-md-3">
+                                    <div class='input-group date' id='txt_Sunouttime'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- @* Create Modal End *@ -->
+
+<script src="~/FunctionJS/Payroll/Setup/RosterGroup.js?@Guid.NewGuid().ToString("n")"></script>

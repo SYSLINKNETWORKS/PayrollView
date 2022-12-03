@@ -1,0 +1,74 @@
+﻿@page
+@{
+    Layout = "_Layout_Report";
+}
+
+<!DOCTYPE html>
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Customer Outstanding</title>
+    <style>
+        thead {
+            color: green;
+        }
+
+        tbody {
+            color: blue;
+        }
+
+        tfoot {
+            color: red;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="x_content">
+            <div class="col-md-12 col-xs-12">
+                <div class="card-box table-responsive">
+                    <div class="col-md-3 col-xs-3">
+                        <label><a href="" id="btnPrint"> <span class="glyphicon glyphicon-print"></span></a></label>
+                        <label><a href="" id="btnExport"> <span class="glyphicon glyphicon-share"></span></a></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Print_Div" class="container">
+        <div class="x_content">
+            <div class="col-md-12 col-xs-12">
+                <div id="detail_table" class="card-box table-responsive">
+                    <!-- start project list -->
+                    @*<table id="detail_table" class="table table-sm" style="font-size:smaller;">
+                            <thead>
+                                <tr>
+                                    <th colspan="8" id="lbl_company_name" style="text-align:center;font-size:14pt;font-weight:bold;"></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="8" id="lbl_head" style="text-align:center;font-variant-caps:all-petite-caps;font-size:12pt;font-weight:bold;"></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="8" id="lbl_usrprt" style="text-align:right;font-variant-caps:all-petite-caps;font-size:6pt;font-weight:bold;"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>*@
+                    <!-- end project list -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="~/FunctionJS/Sales/Report/CustomerOutstanding.js?@Guid.NewGuid().ToString("n")"></script>

@@ -1,0 +1,290 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Bill<small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;">
+                    <button id="btn_new" class="btn btn-info"> New</button>
+                </p>
+                <div class="clearfix"></div>
+            </div>
+            <div class="container">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div>
+                                <div class="card-box table-responsive">
+                                    <!-- start project list -->
+                                    <table id="Table_View" class="table table-striped table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center;">Action</th>
+                                                <th>NO</th>
+                                                <th>Date</th>
+                                                <th>Category</th>
+                                                <th>GRN</th>
+                                                <th>Supplier</th>
+                                                <th>Tax No#</th>
+                                                <th>Item</th>
+                                                <th>NetAmount</th>
+                                                <th>Remarks</th>
+                                                <th style="text-align:center">Stage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                    <!-- end project list -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@* Create & Edit model start *@
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important; margin-top:6%; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Bill</h4>
+            </div>
+            <form id="create_form">
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12" style="text-align:right;">
+                                <input id="btn_sav" type="button" value="Save" onclick="savrec()"
+                                    class="btn btn-success" />
+                                <input id="btn_update" type="button" value="Update" onclick="updrec()"
+                                    class="btn btn-warning" />
+                                <input id="btn_cls" type="button" value="Close" onclick="discon()"
+                                    class="btn btn-danger" data-dismiss="modal" />
+                            </div>
+                            <div class="form-group">
+
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    ID
+                                </label>
+                                <div class="col-md-2">
+                                    <label type="text" id="txt_id" style="display: none;"></label>
+                                    <label type="text" id="txt_no"></label>
+                                </div>
+                                @* <div class="col-md-8">
+                                    <div class="icheck-inline">
+                                    <label>
+                                    <input id="ck_exmpt" type="checkbox" class="icheck"
+                                    data-checkbox="icheckbox_square-grey">Tax-Exempt
+                                    </label>
+                                    <label>
+                                    <input id="ck_wht" type="checkbox" class="icheck"
+                                    data-checkbox="icheckbox_square-grey">WHT Only
+                                    </label>
+                                    </div>
+                                    </div> *@
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2">Tax No#</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_taxNo" readonly value="0" class="form-control"
+                                        placeholder="tax No#" />
+                                </div>
+                                <div class="col-md-1">
+                                    <input id="ck_taxNo" type="checkbox" class="icheck"
+                                        data-checkbox="icheckbox_square-grey">
+                                </div>
+                                <label class="control-label col-md-1" style="text-align:left;">
+                                    Date
+                                </label>
+                                <div class="col-md-4">
+                                    <div class='input-group date' id='txt_dat'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Category
+                                </label>
+                                <div class="col-md-4">
+                                    <select class="form-control" id="ddl_category">
+                                        <option value="PurchaseOrder" selected>Purchase Order</option>
+                                        <option value="WorkOrder">Work Order</option>
+                                    </select>
+
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Supplier
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_sup" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Supplier Bill#
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_supbil" class="form-control"
+                                        placeholder="supplier bill#" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:left;" />
+                                Supplier Date
+                                </label>
+                                <div class="col-md-4">
+                                    <div class='input-group date' id='txt_sdat'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" style="text-align:left;">
+                                        GRN
+                                    </label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="txt_grn" class="form-control" />
+                                    </div>
+                                    <div class="col-md-">
+                                        <input id="btn_add" type="button" onclick="AddGRN()" value="Add"
+                                            class="btn btn-success" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" style="text-align:left;">
+                                        Currency
+                                    </label>
+                                    <div class="col-md-4">
+                                        <input type="text" id="txt_cur" class="form-control" />
+                                    </div>
+                                    <label class="control-label col-md-2" style="text-align:left;">
+                                        Ex Rate
+                                    </label>
+                                    <div class="col-md-4">
+                                        <input type="number" id="txt_exrate" class="form-control" value="1" min="1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="control-label col-md-2" style="text-align:left;">
+                                        Remarks
+                                    </label>
+                                    <div class="col-md-10">
+                                        <input type="text" id="txt_rmk" class="form-control" />
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" id="txt_dcArr" style="display: none;">
+                            @*Order Details*@
+                            @* <h5
+                                style="margin-top:10px;color:#ff6347;text-align:center;font-weight:900;"><u>Details</u></h5>
+                            *@
+                            @*<hr />*@
+                            <div style="overflow-x:scroll">
+                                <table id="detailsTable" class="table table-striped table-bordered">
+                                    <thead style="text-align:center">
+                                        <tr>
+                                            <th>Action</th>
+                                            <th>S.No</th>
+                                            <th style="display: none;">GRNID</th>
+                                            <th>GRN No#</th>
+                                            <th style="display: none;">ItemId</th>
+                                            <th>Item</th>
+                                            <th>Account</th>
+                                            <th>Qty</th>
+                                            <th>Rate</th>
+                                            <th>Amt</th>
+                                            <th>GST %</th>
+                                            <th>GST Amt</th>
+                                            <th>Net Amt</th>
+                                            <th>Remarks</th>
+                                            <th>Item Category</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4" style="text-align:left;">
+                                            Amount
+                                        </label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txt_amt" value="0" readonly class="form-control"
+                                                placeholder="0.00" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4" style="text-align:left;">
+                                            Discount
+                                        </label>
+                                        <div class="col-md-3">
+                                            <input type="text" id="txt_disper" value="0" class="form-control" value="0"
+                                                placeholder="0.00" onchange="calculationMaster()" />
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input type="text" id="txt_disamt" value="0" class="form-control"
+                                                placeholder="0.00" onchange="calculationMaster()" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4" style="text-align:left;">
+                                            Net Amount
+                                        </label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txt_netamt" readonly class="form-control" value="0"
+                                                placeholder="0.00" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+@* Create & Edit model start *@
+
+<script src="~/FunctionJS/Purchase/Transaction/Bill.js?@Guid.NewGuid().ToString("n")"></script>

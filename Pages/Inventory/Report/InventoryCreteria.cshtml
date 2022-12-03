@@ -1,0 +1,219 @@
+@page
+@{
+	Layout = "_Layout";
+}
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Inventory Criteria <span id="creheading"></span></h2>
+            <div class="clearfix"></div>
+            <input type="hidden" id="reportid" />
+        </div>
+        <div class="container">
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="text-align:left;">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <input type="submit" value="View" id="btn_view">
+                                            <input type="reset" value="Cancel">
+                                        </div>
+                                        <div class="form-group">
+
+                                            <a id="OpeningStock" onclick="discon(1)">Opening Stock</a>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <a id="StockLedger" onclick="discon(2)">Ledger</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="StockLedgerValuation" onclick="discon(3);">Ledger with valution</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <a id="StockSummary" onclick="discon(4);">Summary</a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a id="StockSummaryValuation" onclick="discon(5);">Summary with valution</a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a id="StockMovement" onclick="discon(6);">Movement</a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a id="StockRequisition" onclick="discon(7);">Requisition</a>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <a id="StockIssue" onclick="discon(8);">Issuance</a>
+                                        </div>
+
+                                    
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                    <!--date as on start-->
+                                    <div id="div_dateason">
+                                        <div class="form-group" id="">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                As On Date
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <div class='input-group date' id='txt_dat_ason'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--date as on end-->
+
+                                    <!--date from to start-->
+                                    <div id="div_datefromto">
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Month
+                                            </label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select id="ddl_month" class="form-control"
+                                                    onchange="getMonth(this.options[this.selectedIndex].value)"
+                                                    style="height: 30px;">
+                                                    <option value="-1" selected>All</option>
+                                                    <option value="1">January</option>
+                                                    <option value="2">February</option>
+                                                    <option value="3">March</option>
+                                                    <option value="4">April</option>
+                                                    <option value="5">May</option>
+                                                    <option value="6">June</option>
+                                                    <option value="7">July</option>
+                                                    <option value="8">August</option>
+                                                    <option value="9">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                From
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class='input-group date' id='txt_dat_frm'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                To
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class='input-group date' id='txtdate_to'>
+                                                    <input type='text' class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--date from to End-->
+
+                                    <!--Common div Start-->                                      
+                                    <div id="div_common">
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Warehouse
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txtwarehouse" class="form-control"
+                                                    placeholder="Warehouse">
+                                            </div>
+                                        </div>
+
+                                       
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Category
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txtItemCategory" class="form-control"
+                                                    placeholder="Category">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Sub-Category Master
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txtItemSubCategoryMaster" class="form-control"
+                                                    placeholder="Sub-Category Master">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Sub-Category
+											</label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txtItemSubCategory" class="form-control"
+                                                    placeholder="Sub-Category">
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                               Brand
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txtItemBrand" class="form-control"
+                                                    placeholder="Brand">
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                               Item
+                                            </label>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txtItem" class="form-control"
+                                                    placeholder="Item">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!--Common div End-->
+                                </div>
+
+                               
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src='~/FunctionJS/Inventory/Report/InventoryCreteria.js?@Guid.NewGuid().ToString("n")'></script>

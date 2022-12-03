@@ -1,0 +1,571 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>PURCHASE DASHBOARD</h2>
+                </div>
+                <div class="col-md-8">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-2 col-xs-2">
+            <div class="px-2" style="background-color: rgba(132, 89, 174, 0.9); color:white;padding: 2%">
+                <img id="img_box_total_requisition" src="~/images/dashboard.GIF" />
+                <p style="font-size:large;"> Requisition</p>
+                <p id="box_total_requisition" style="font-size:large;"> 0</p>
+
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-2">
+            <div class="px-2" style="background-color:rgba(225, 71, 74, 1.0); color:white;padding: 2%">
+                <img id="img_box_total_purchaseorder" src="~/images/dashboard.GIF" />
+                <p style="font-size:large;"> Purchase Order</p>
+                <p id="box_total_purchaseorder" style="font-size:large;"> 0</p>
+
+            </div>
+        </div>
+
+        <div class="col-md-2 col-xs-2">
+            <div style="background-color:rgba(70, 144, 188, 1.0); color:white;padding: 2%">
+                <img id="img_box_total_goodsreceivingnote" src="~/images/dashboard.GIF" />
+                <p style="font-size:large;"> GRN</p>
+                <p id="box_total_goodsreceivingnote" style="font-size:large;"> 0</p>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-2">
+            <div class="px-2" style="background-color:rgb(77, 179, 153); color:white;padding: 2%">
+                <img id="img_box_total_bill" src="~/images/dashboard.GIF" />
+                <p style="font-size:large;"> Bill</p>
+                <p id="box_total_bill" style="font-size:large;"> 0</p>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-2">
+            <div class="px-2" style="background-color:rgb(77, 179, 200); color:white;padding: 2%">
+                <img id="img_box_total_payment" src="~/images/dashboard.GIF" />
+                <p style="font-size:large;"> Payment</p>
+                <p id="box_total_payment" style="font-size:large;"> 0</p>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-2">
+            <div class="px-2" style="background-color:rgb(77, 179, 200); color:white;padding: 2%">
+                <img id="img_box_total_debitnote" src="~/images/dashboard.GIF" />
+                <p style="font-size:large;"> Debit Note</p>
+                <p id="box_total_debitnote" style="font-size:large;"> 0</p>
+            </div>
+        </div>
+        <div class=" clearfix">
+        </div>
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+    </div>
+
+
+
+    
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        Requisition </a>
+                        <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse1" title="Expend Production" id="requisition">
+                </a>
+                    <span style="font-size:small;" id="spn_totalrequisition"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row" style="margin-bottom: 1%;">
+                        <div id="div_requisitionMaster" class="col-md-12 col-xs-12">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        Purchase Order</a>
+                        <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse2" title="Expend Production" id="purchaseorder">
+                </a>
+                    <span style="font-size:small;" id="spn_totalpurchaseorder"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row" style="margin-bottom: 1%;">
+                        <div id="div_purchaseordermaster" class="col-md-12 col-xs-12">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        Goods Receiving Note</a>
+                    <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse3" title="Expend Production" id="goodsreceivingnote">
+                    </a>
+                    <span style="font-size:small;" id="spn_totalgoodsreceivingnote"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="row" style="margin-bottom: 1%;">
+                        <div id="div_goodsreceivingnotemaster" class="col-md-12 col-xs-12">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        Bill </a>
+                    <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse4" title="Expend Production" id="bill">
+                    </a>
+                    <span style="font-size:small;" id="spn_totalbill"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row" style="margin-bottom: 1%;">
+                        <div id="div_billmaster" class="col-md-12 col-xs-12">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        Payment</a>
+                    <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse5" title="Expend Production" id="payment">
+                    </a>
+                    <span style="font-size:small;" id="spn_totalpayment"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="row" style="margin-bottom: 1%;">
+                        <div id="div_paymentmaster" class="col-md-12 col-xs-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        Debit Note</a>
+                    <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse6" title="Expend Production" id="debitnote">
+                    </a>
+                    <span style="font-size:small;" id="spn_totaldebitnote"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4>
+            </div>
+            <div id="collapse6" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="row" style="margin-bottom: 1%;">
+                        <div id="div_debitnotemaster" class="col-md-12 col-xs-12">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+
+
+    <!-- requisition Model-->
+    <div class="modal fade" id="searchModelrequisition" role="dialog">
+        <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                NO
+                            </label>
+                            <div class="col-md-10">
+                                <input type="number" id="txt_no" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateFrom
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datFrom'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateTo
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datTo'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSearchrequisition" class="btn btn-default">Search</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- Purchase Order Model-->
+    <div class="modal fade" id="searchModelpurchaseorder" role="dialog">
+        <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                NO
+                            </label>
+                            <div class="col-md-10">
+                                <input type="number" id="txt_noSo" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateFrom
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datFromSo'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateTo
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datToSo'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSearchpurchaseorder" class="btn btn-default">Search</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- goodsreceivingnote Model-->
+    <div class="modal fade" id="searchModelgoodsreceivingnote" role="dialog">
+        <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                NO
+                            </label>
+                            <div class="col-md-10">
+                                <input type="number" id="txt_noDC" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateFrom
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datFromDC'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateTo
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datToDC'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSearchgoodsreceivingnote" class="btn btn-default">Search</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- bill Model-->
+    <div class="modal fade" id="searchModelbill" role="dialog">
+        <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                NO
+                            </label>
+                            <div class="col-md-10">
+                                <input type="number" id="txt_nobill" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateFrom
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datFrombill'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateTo
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datTobill'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSearchbill" class="btn btn-default">Search</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- payment Model-->
+    <div class="modal fade" id="searchModelpayment" role="dialog">
+        <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                NO
+                            </label>
+                            <div class="col-md-10">
+                                <input type="number" id="txt_nopayment" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateFrom
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datFrompayment'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateTo
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datTopayment'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSearchpayment" class="btn btn-default">Search</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- debitNote Model-->
+    <div class="modal fade" id="searchModeldebitnote" role="dialog">
+        <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                NO
+                            </label>
+                            <div class="col-md-10">
+                                <input type="number" id="txt_nodebitnote" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateFrom
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datFromdebitnote'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                DateTo
+                            </label>
+                            <div class="col-md-4">
+                                <div class='input-group date' id='txt_datTodebitnote'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSearchdebitnote" class="btn btn-default">Search</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src='~/FunctionJS/Notification.js?@Guid.NewGuid().ToString("n")'></script>
+    <script type="module" src='~/FunctionJS/Login/DashboardPermissionByName.js?@Guid.NewGuid().ToString("n")' async
+        defer></script>
+    <script src='~/FunctionJS/Purchase/Report/Dashboard/PurchaseDashBoard.js?@Guid.NewGuid().ToString("n")'></script>
+    <script type="module"
+        src="~/FunctionJS/Purchase/Report/Dashboard/MainDashboard.js?@Guid.NewGuid().ToString("n")"></script>

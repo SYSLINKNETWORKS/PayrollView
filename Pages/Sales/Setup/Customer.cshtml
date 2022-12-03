@@ -1,0 +1,408 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+
+
+
+<!DOCTYPE html>
+
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Customer<small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;"> <button id="btn_new" class="btn btn-info"> New</button></p>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="container">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="card-box table-responsive">
+
+                                <!-- start project list -->
+                                @*<table id="voucher_cr_table" class="table table-striped table-bordered dataTable
+                                    bs-select">
+                                *@
+                                <table id="Table_View" class="table table-striped table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;">Action</th>
+                                            <th>Cagetory</th>
+                                            <th>Sub-Cagetory</th>
+                                            <th>Name</th>
+                                            <th>Salesman</th>
+                                            <th>Zone</th>
+                                            <th>Currency</th>
+                                            <th>Status</th>
+                                            <th>Active</th>
+                                            <th>Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <!-- end project list -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@* Create Modal Start *@
+
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important; margin-top:6%; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Customer</h4>
+                <div id="img_load_sav" style="width:100%;text-align:center;">
+                    <img src="~/images/working.GIF" />
+                </div>
+            </div>
+            <form id="create_form">
+                <div class="row">
+                    <div class="form-horizontal">
+                        <div class="col-md-12" style="text-align:right;">
+                            <input id="btn_sav" type="button" value="Save" onclick="savrec();"
+                                class="btn btn-success" />
+                            <input id="btn_upd" type="button" value="Update" onclick="updrec();"
+                                class="btn btn-warning" />
+                            <input id="btn_cls" type="button" value="Close" onclick="discon()" class="btn btn-danger"
+                                data-dismiss="modal" />
+                        </div>
+                        <div class="col-md-12">
+
+
+
+                            <div class="form-group">
+                                <label id=txt_id class="control-label col-md-2" style="text-align:left;display:none;">
+                                    ID
+                                </label>
+                                 <div class="col-md-6">
+                                </div>
+                                <div class="col-md-6 icheck-inline">
+
+                                    <label>
+                                        <input id="ck_active" type="checkbox" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Active
+                                    </label>
+                                </div>
+                                <div class="col-md-2"></div>
+
+
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Zone
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_zone" class="form-control" />
+                                </div>
+                                <div class="col-md-3"></div>
+                                <div class="icheck-inline col-md-3">
+                                    <label>
+                                        <input id="rb_normal" type="radio" name="Customer_Status" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Normal Account
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Category
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_category" class="form-control" />
+                                </div>
+                                <div class="col-md-3"></div>
+                                <div class="icheck-inline col-md-3">
+                                    <label>
+                                        <input id="rb_sick" type="radio" name="Customer_Status" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Sick Account
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Sub Category
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_subcategory" class="form-control" />
+                                </div>
+                                <div class="col-md-3"></div>
+                                <div class="icheck-inline col-md-3">
+                                    <label>
+                                        <input id="rb_dead" type="radio" name="Customer_Status" class="icheck"
+                                            data-checkbox="icheckbox_square-grey">Dead Account
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Salesman
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_emp" class="form-control" />
+                                </div>
+                                <label class="control-label col-md-3" style="text-align:left;">
+                                    Production Variance %
+                                </label>
+                                <div class="col-md-3">
+                                    <input type="number" id="txt_pv" value="0" min="0" class="form-control" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Name
+                                </label>
+                                <div class="col-md-6">
+                                    <input type="text" id="txt_name" class="form-control" />
+                                </div>
+
+                                <label class="control-label col-md-1" style="text-align:left;">
+                                    Currency
+                                </label>
+                                <div class="col-md-2">
+                                    <input type="text" id="txt_currency" class="form-control" />
+                                </div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Con.Per.
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_cp" class="form-control" />
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5">
+                                    <label class="control-label col-md-4" style="text-align:left;">
+                                        Credit Days
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="number" id="txt_credays" class="form-control" value="0" min="0" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Address
+                                </label>
+                                <div class="col-md-4">
+                                    <textarea type="text" id="txt_address" class="form-control"></textarea>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+
+                                        <label class="control-label col-md-4" style="text-align:left">
+                                            Amount Limit
+                                        </label>
+                                        <div class="col-md-8">
+                                            <input type="number" id="txt_amountlimit" class="form-control"
+                                                value="0.00" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    C.N.I.C
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_cnic" class="form-control" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:right;">
+                                    GST Percentage
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="number" id="txt_gstPer" class="form-control" value="0" min="0" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Phone
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_phone" class="form-control" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:right;">
+                                    Mobile
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_mobile" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Fax
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_fax" class="form-control" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:right;">
+                                    Email
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_email" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Web
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_web" class="form-control" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:right;">
+                                    N.T.N
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_ntn" class="form-control" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2">
+                                    <input id="ck_stn" type="checkbox" class="icheck"
+                                        data-checkbox="icheckbox_square-grey">S.T.N
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="text" id="txt_stn" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Location
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" id="txt_lctn" class="form-control" />
+                                </div>
+                                <div class="col-md-1">
+                                    <input id="btn_addlocation" type="button" value="Add" class="btn btn-dark" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <table id="detailslctnTable" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center;">Action</th>
+                                                <th style="display: none;">LocationId</th>
+                                                <th>Location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody> </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Name
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_cusName" class="form-control" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:right;">
+                                    Designation
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_cusDes" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Phone#
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_cusPhone" class="form-control" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:right;">
+                                    Mobile#
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_cusMobile" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Email
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_cusEmail" class="form-control" />
+                                </div>
+                                <label class="control-label col-md-2" style="text-align:right;">
+                                    Department
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_dpt" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-2">
+                                    <div style="text-align:left;">
+                                        <input id="btn_addCustomer" type="button" value="Add" class="btn btn-dark" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <table id="CustomerContactDetail" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Action</th>
+                                                <th>Name</th>
+                                                <th>Designation</th>
+                                                <th>Phone</th>
+                                                <th>Mobile</th>
+                                                <th>Email</th>
+                                                <th style="display: none;">Departmentid</th>
+                                                <th>Department</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody> </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@* Create Modal End *@
+
+
+<script src="~/FunctionJS/Sales/Setup/Customer.js?@Guid.NewGuid().ToString("n")"></script>

@@ -1,0 +1,184 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+
+<style>
+    
+    div.bootstrap-datetimepicker-widget {
+        top: 45px !important;
+        bottom: auto !important;
+    }
+
+
+</style>
+<!DOCTYPE html>
+
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Bank Reconciliation<small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;"> <button id="btn_sav" class="btn btn-success" onclick="savrec();"> Save</button></p>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2" style="text-align:left;">
+                        Account
+                    </label>
+                    <div class="col-md-10">
+                        <input type="text" id="txt_acc_mas" style="width:100%;" />
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2" style="text-align:left;">
+                        Date From
+                    </label>
+                    <div class="col-md-2">
+                        <div class='input-group date' id='txt_dat_frm'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <label class="control-label col-md-2" style="text-align:left;">
+                        Date To
+                    </label>
+                    <div class="col-md-2">
+                        <div class='input-group date' id='txt_dat_to'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="btn_find" type="button" value="Find" onclick="FindRec();" class="btn glyphicon-search" />
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <!--  Bank Payment Start -->
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2" style="text-align:left;">
+                        Cleared Amount
+                    </label>
+                    <div class="col-md-2" id="txt_cleared_amount_bp">
+                    </div>
+                    <label class="control-label col-md-2" style="text-align:left;">
+                        Un-Clear Amount
+                    </label>
+                    <div class="col-md-2" id="txt_unclear_amount_bp">
+                    </div>
+                    <label class="control-label col-md-2" style="text-align:left;">
+                        Total Amount
+                    </label>
+                    <div class="col-md-2" id="txt_total_amount_bp">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="card-box table-responsive">
+
+                                <!-- start project list -->
+                                <table id="Table_View_BP" class="table table-striped table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Chq #</th>
+                                            <th>Chq Date</th>
+                                            <th>Chq Clear Date</th>
+                                            <th>Cleared</th>
+                                            <th>Chq Amount</th>
+                                            <th>Paid</th>
+                                            <th>Narration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <!-- end project list -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  Bank Payment END -->
+            <!--  Bank Receipt Start -->
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2" style="text-align:left;">
+                        Cleared Amount
+                    </label>
+                    <div class="col-md-2" id="txt_cleared_amount_br">
+                    </div>
+                    <label class="control-label col-md-2" style="text-align:left;">
+                        Un-Clear Amount
+                    </label>
+                    <div class="col-md-2" id="txt_unclear_amount_br">
+                    </div>
+                    <label class="control-label col-md-2" style="text-align:left;">
+                        Total Amount
+                    </label>
+                    <div class="col-md-2" id="txt_total_amount_br">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            @*                            <div class="card-box table-responsive">*@
+
+                            <div>
+                                <!-- start project list -->
+                                <table id="Table_View_BR" class="table table-striped table-bordered table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Chq #</th>
+                                            <th>Chq Date</th>
+                                            <th>Chq Clear Date</th>
+                                            <th>Cleared</th>
+                                            <th>Chq Amount</th>
+                                            <th>Paid</th>
+                                            <th>Narration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <!-- end project list -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  Bank Receipt END -->
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<script src="~/FunctionJS/GL/Transaction/BankReconciliation.js?@Guid.NewGuid().ToString("n")"></script>

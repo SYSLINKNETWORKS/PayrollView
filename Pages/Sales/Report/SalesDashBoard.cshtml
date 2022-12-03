@@ -1,0 +1,638 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>SALE DASHBOARD</h2>
+                </div>
+                <div class="col-md-8">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 1%;">
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color: rgba(132, 89, 174, 0.9); color:white;padding: 2%">
+            <img id="img_box_total_quotation" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Quotation</p>
+            <p id="box_total_quotation" style="font-size:large;"> 0</p>
+
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color:rgba(225, 71, 74, 1.0); color:white;padding: 2%">
+            <img id="img_box_total_saleorder" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Sale Order</p>
+            <p id="box_total_saleorder" style="font-size:large;"> 0</p>
+
+        </div>
+    </div>
+
+    <div class="col-md-2 col-xs-2">
+        <div style="background-color:rgba(70, 144, 188, 1.0); color:white;padding: 2%">
+            <img id="img_box_total_deliverychallan" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Delivery Challan</p>
+            <p id="box_total_deliverychallan" style="font-size:large;"> 0</p>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color:rgb(77, 179, 153); color:white;padding: 2%">
+            <img id="img_box_total_invoice" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Invoice</p>
+            <p id="box_total_invoice" style="font-size:large;"> 0</p>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color:rgb(77, 179, 200); color:white;padding: 2%">
+            <img id="img_box_total_receipt" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Receipt</p>
+            <p id="box_total_receipt" style="font-size:large;"> 0</p>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color:rgb(77, 179, 200); color:white;padding: 2%">
+            <img id="img_box_total_creditnote" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Credit Note</p>
+            <p id="box_total_creditnote" style="font-size:large;"> 0</p>
+        </div>
+    </div>
+    <div class=" clearfix">
+    </div>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+</div>
+
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Quotation </a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse1" title="Expend Production" id="quotation">
+                </a>    
+                <span style="font-size:small;" id="spn_totalquotation"
+                    class="badge badge-pill badge-secondary">0</span>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 1%;">
+                    <div id="div_quotationmaster" class="col-md-12 col-xs-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    QuotationDetail</a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse2" title="Expend Production" id="quotationdetail">
+                </a>    
+                <span style="font-size:small;" id="spn_totalquotationDetail"
+                    class="badge badge-pill badge-secondary">0</span>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 1%;">
+                    <div id="div_quotationDetailmaster" class="col-md-12 col-xs-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Sale Order</a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse3" title="Expend Production" id="saleorder">
+                </a>    
+                <span style="font-size:small;" id="spn_totalsaleorder"
+                    class="badge badge-pill badge-secondary">0</span>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 1%;">
+                    <div id="div_SaleOrdermaster" class="col-md-12 col-xs-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Delivery Challan</a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse4" title="Expend Production" id="deliverychallan">
+                </a>    
+                <span style="font-size:small;" id="spn_totaldeliverychallan" class="badge badge-pill badge-secondary">0</span>
+            </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 1%;">
+                    <div id="div_deliverychallanmaster" class="col-md-12 col-xs-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Invoice</a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse5" title="Expend Production" id="invoice">
+                </a>    
+                <span style="font-size:small;" id="spn_totalinvoice" class="badge badge-pill badge-secondary">0</span>
+            </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 1%;">
+                    <div id="div_invoicemaster" class="col-md-12 col-xs-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Receipt </a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse6" title="Expend Production" id="receipt">
+                </a>    
+                <span style="font-size:small;" id="spn_totalreceipt" class="badge badge-pill badge-secondary">0</span>
+            </h4>
+        </div>
+        <div id="collapse6" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 1%;">
+                    <div id="div_receiptmaster" class="col-md-12 col-xs-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion">
+                    Credit Note </a>
+                <a class="glyphicon glyphicon-chevron-right" style="float:right" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapse7" title="Expend Production" id="creditnote">
+                </a>    
+                <span style="font-size:small;" id="spn_totalcreditnote" class="badge badge-pill badge-secondary">0</span>
+            </h4>
+        </div>
+        <div id="collapse7" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 1%;">
+                    <div id="div_creditnotemaster" class="col-md-12 col-xs-12">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Quotation Master Model-->
+<div class="modal fade" id="searchModelQuotationMaster" role="dialog">
+    <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            NO
+                        </label>
+                        <div class="col-md-10">
+                            <input type="number" id="txt_no" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateFrom
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datFrom'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateTo
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datTo'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSearchQuotationMaster" class="btn btn-default">Search</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Quotation Detail Model-->
+<div class="modal fade" id="searchModelQuotationDetail" role="dialog">
+    <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            NO
+                        </label>
+                        <div class="col-md-10">
+                            <input type="number" id="txt_noDetail" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateFrom
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datFromDetail'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateTo
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datToDetail'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSearchQuotationDetail" class="btn btn-default">Search</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Sale Order Model-->
+<div class="modal fade" id="searchModelSaleOrder" role="dialog">
+    <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            NO
+                        </label>
+                        <div class="col-md-10">
+                            <input type="number" id="txt_noSo" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateFrom
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datFromSo'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateTo
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datToSo'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSearchSaleOrder" class="btn btn-default">Search</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- DeliveryChallan Model-->
+<div class="modal fade" id="searchModeldeliverychallan" role="dialog">
+    <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            NO
+                        </label>
+                        <div class="col-md-10">
+                            <input type="number" id="txt_noDC" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateFrom
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datFromDC'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateTo
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datToDC'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSearchdeliverychallan" class="btn btn-default">Search</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Invoice Model-->
+<div class="modal fade" id="searchModelInvoice" role="dialog">
+    <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            NO
+                        </label>
+                        <div class="col-md-10">
+                            <input type="number" id="txt_noInvoice" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateFrom
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datFromInvoice'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateTo
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datToInvoice'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSearchInvoice" class="btn btn-default">Search</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Receipt Model-->
+<div class="modal fade" id="searchModelreceipt" role="dialog">
+    <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            NO
+                        </label>
+                        <div class="col-md-10">
+                            <input type="number" id="txt_noreceipt" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateFrom
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datFromreceipt'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateTo
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datToreceipt'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSearchreceipt" class="btn btn-default">Search</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- CreditNote Model-->
+<div class="modal fade" id="searchModelcreditnote" role="dialog">
+    <div class="modal-dialog" style="width:500px !important; margin-top:30%; margin-left: 60%; ">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            NO
+                        </label>
+                        <div class="col-md-10">
+                            <input type="number" id="txt_nocreditnote" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateFrom
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datFromcreditnote'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="control-label col-md-2" style="text-align:left;">
+                            DateTo
+                        </label>
+                        <div class="col-md-4">
+                            <div class='input-group date' id='txt_datTocreditnote'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSearchcreditnote" class="btn btn-default">Search</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src='~/FunctionJS/Notification.js?@Guid.NewGuid().ToString("n")'></script>
+<script type="module" src='~/FunctionJS/Login/DashboardPermissionByName.js?@Guid.NewGuid().ToString("n")' async
+    defer></script>
+<script src='~/FunctionJS/Sales/Report/Dashboard/SalesDashBoard.js?@Guid.NewGuid().ToString("n")'></script>
+<script type="module" src="~/FunctionJS/Sales/Report/Dashboard/MainDashboard.js?@Guid.NewGuid().ToString("n")"></script>

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Company>MMC</Company>
+    <Authors>ABDUL SATTAR IBRAHIM</Authors>
+    <Product>Authorization Service</Product>
+    <Description>Authorization Service</Description>
+    <Copyright>Copyright © 2022</Copyright>
+    <AssemblyVersion>1.1.915.2022</AssemblyVersion>
+    <Version>1.1.915.2022</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7"/>
+  </ItemGroup>
+</Project>

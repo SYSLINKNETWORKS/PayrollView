@@ -1,0 +1,308 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2>DEPARTMENT DASHBOARD</h2>
+
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <img id="img_printing" src="~/images/dashboard.GIF" />
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-4  bg-white"
+                                    style="float:left; color: rgb(128, 128, 128); overflow:scroll; height:400px;">
+                                    <h4 style="font-weight:bold;">Printing Department <span>
+                                            @* <button type="button" class="btn btn-dark" id="btn_printing"
+                                                style="float:right" >Production</button> *@
+                                        </span>
+                                    </h4>
+                                    <table class="table table-striped table-bordered table-sm" id="tbl_printing">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Job#</th>
+                                                <th>Date</th>
+                                                <th>Delivery</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Production</th>
+                                                <th>Wastage</th>
+                                                <th>Balance</th>
+                                                <th>Days</th>
+                                                <th>Machine</th>
+                                                <th>Insert Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-4  bg-white"
+                                    style="float:left; color: rgb(128, 128, 128); overflow:scroll; height:400px;">
+                                    <h4 style="font-weight:bold;">UV Department <span>
+                                            @* <button type="button" class="btn btn-dark" id="btn_uv"
+                                                style="float:right" >Production</button> *@
+                                        </span>
+                                    </h4>
+                                    @* <img id="img_uv" src="~/images/dashboard.GIF" /> *@
+                                    <table class="table table-striped table-bordered table-sm" id="tbl_uv">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Job#</th>
+                                                <th>Date</th>
+                                                <th>Delivery</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Production</th>
+                                                <th>Wastage</th>
+                                                <th>Balance</th>
+                                                <th>Days</th>
+                                                <th>Machine</th>
+                                                <th>Insert Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-md-4  bg-white"
+                                    style="float:left; color: rgb(128, 128, 128); overflow:scroll; height:400px;">
+                                    <h4 style="font-weight:bold;">Lamination Department <span>
+                                            @* <button type="button" class="btn btn-dark" id="btn_lamination"
+                                                style="float:right" >Production</button> *@
+                                        </span>
+                                    </h4>
+                                    @* <img id="img_lamination" src="~/images/dashboard.GIF" /> *@
+                                    <table class="table table-striped table-bordered table-sm" id="tbl_lamination">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Job#</th>
+                                                <th>Date</th>
+                                                <th>Delivery</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Production</th>
+                                                <th>Wastage</th>
+                                                <th>Balance</th>
+                                                <th>Days</th>
+                                                <th>Machine</th>
+                                                <th>Insert Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4  bg-white"
+                                    style="float:left; color: rgb(128, 128, 128); overflow:scroll; height:400px;">
+                                    <h4 style="font-weight:bold;">Foiling Department <span>
+                                            @* <button type="button" class="btn btn-dark" id="btn_foiling"
+                                                style="float:right" >Production</button> *@
+                                        </span>
+                                    </h4>
+                                    @* <img id="img_foiling" src="~/images/dashboard.GIF" /> *@
+                                    <table class="table table-striped table-bordered table-sm" id="tbl_foiling">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Job#</th>
+                                                <th>Date</th>
+                                                <th>Delivery</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Production</th>
+                                                <th>Wastage</th>
+                                                <th>Balance</th>
+                                                <th>Days</th>
+                                                <th>Machine</th>
+                                                <th>Insert Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-4  bg-white"
+                                    style="float:left; color: rgb(128, 128, 128); overflow:scroll; height:400px;">
+                                    <h4 style="font-weight:bold;">Die-Cutting Department<span>
+                                            @* <button type="button" class="btn btn-dark" id="btn_diecutting"
+                                                style="float:right" >Production</button> *@
+                                        </span>
+                                    </h4>
+                                    @* <img id="img_diecutting" src="~/images/dashboard.GIF" /> *@
+                                    <table class="table table-striped table-bordered table-sm" id="tbl_diecutting">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Job#</th>
+                                                <th>Date</th>
+                                                <th>Delivery</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Production</th>
+                                                <th>Wastage</th>
+                                                <th>Balance</th>
+                                                <th>Days</th>
+                                                <th>Machine</th>
+                                                <th>Insert Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-4  bg-white"
+                                    style="float:left; color: rgb(128, 128, 128); overflow:scroll; height:400px;">
+                                    <h4 style="font-weight:bold;">Pasting Department <span>
+                                            @* <button type="button" class="btn btn-dark" id="btn_pasting"
+                                                style="float:right" >Production</button> *@
+                                        </span>
+                                    </h4>
+                                    @* <img id="img_pasting" src="~/images/dashboard.GIF" /> *@
+                                    <table class="table table-striped table-bordered table-sm" id="tbl_pasting">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Job#</th>
+                                                <th>Date</th>
+                                                <th>Delivery</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Production</th>
+                                                <th>Wastage</th>
+                                                <th>Balance</th>
+                                                <th>Days</th>
+                                                <th>Machine</th>
+                                                <th>Insert Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4  bg-white"
+                                    style="float:left; color: rgb(128, 128, 128); overflow:scroll; height:400px;">
+                                    <h4 style="font-weight:bold;">Eyelet Department <span>
+                                            @* <button type="button" class="btn btn-dark" id="btn_eyelet"
+                                                style="float:right" >Production</button> *@
+                                        </span>
+                                    </h4>
+
+                                    @* <img id="img_eyelet" src="~/images/dashboard.GIF" /> *@
+                                    <table class="table table-striped table-bordered table-sm" id="tbl_eyelet">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Job#</th>
+                                                <th>Date</th>
+                                                <th>Delivery</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Production</th>
+                                                <th>Wastage</th>
+                                                <th>Balance</th>
+                                                <th>Days</th>
+                                                <th>Machine</th>
+                                                <th>Insert Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-4  bg-white"
+                                    style="float:left; color: rgb(128, 128, 128); overflow:scroll; height:400px;">
+                                    <h4 style="font-weight:bold;">Sublet Department <span>
+                                            @* <button type="button" class="btn btn-dark" id="btn_sublet"
+                                                style="float:right" >Production</button> *@
+                                        </span>
+                                    </h4>
+                                    @* <img id="img_sublets" src="~/images/dashboard.GIF" /> *@
+                                    <table class="table table-striped table-bordered table-sm" id="tbl_sublet">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Job#</th>
+                                                <th>Date</th>
+                                                <th>Delivery</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Production</th>
+                                                <th>Wastage</th>
+                                                <th>Balance</th>
+                                                <th>Days</th>
+                                                <th>Machine</th>
+                                                <th>Insert Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-md-4  bg-white"
+                                    style="float:left; color: rgb(128, 128, 128); overflow:scroll; height:400px;">
+                                    <h4 style="font-weight:bold;">Packing Department <span>
+                                            @* <button type="button" class="btn btn-dark" id="btn_packing"
+                                                style="float:right" >Production</button> *@
+                                        </span>
+                                    </h4>
+                                    @* <img id="img_packing" src="~/images/dashboard.GIF" /> *@
+                                    <table class="table table-striped table-bordered table-sm" id="tbl_packing">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Job#</th>
+                                                <th>Date</th>
+                                                <th>Delivery</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Production</th>
+                                                <th>Wastage</th>
+                                                <th>Balance</th>
+                                                <th>Days</th>
+                                                <th>Machine</th>
+                                                <th>Insert Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+    <script src='~/FunctionJS/Notification.js?@Guid.NewGuid().ToString("n")'></script>
+    <script src="~/FunctionJS/Production/Transaction/DepartmentDashboard.js?@Guid.NewGuid().ToString("n")"></script>

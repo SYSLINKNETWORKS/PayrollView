@@ -1,0 +1,587 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Quotations <small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;"> <button id="btn_new" class="btn btn-info"> New</button></p>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="card-box table-responsive">
+                            <table id="Table_View" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width:15%">Action</th>
+                                        <th style="text-align:center">No</th>
+                                        <th style="text-align:center">Date</th>
+                                        <th style="text-align:center">Category</th>
+                                        <th style="text-align:center">Customer Name</th>
+                                        <th style="text-align:center">Salesman</th>
+                                        <th style="text-align:center">Remarks</th>
+                                        <th style="text-align:center">Check</th>
+                                        <th style="text-align:center">Approved</th>
+                                        <th style="text-align:center">Cancel</th>
+                                        <th style="text-align:center">Close</th>
+                                        <th style="text-align:center">Previous Quote</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@* Create & Edit model start *@
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important; margin-top:6%; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-md-8">
+                    <h2>Quotations</h2>
+                </div>
+                <div class="col-md-4" style="text-align:right;">
+                    <input id="btn_sav" type="button" value="Save" onclick="savrec()" class="btn btn-success" />
+                    <input id="btn_update" type="button" value="Update" onclick="updrec()" class="btn btn-warning" />
+                    <input id="btn_cls" type="button" value="Close" onclick="discon()" class="btn btn-danger"
+                        data-dismiss="modal" />
+                </div>
+            </div>
+            <form id="create_form">
+                <div class="modal-body">
+                    <div class="form-horizontal">
+
+                        <div class="form-group">
+                            <div class="col-md-2" id="txt_id" hidden>
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                NO#
+                            </label>
+                            <div class="col-md-2">
+                                <input type="text" id="txt_no" class="form-control" disabled />
+                            </div>
+
+@* 
+                                                        <label class="control-label col-md-2" style="text-align:left;">
+                                Category
+                            </label>
+                            <div class="col-md-2">
+                                <select id="txt_cat" onChange="show()" class="form-control">
+                                    <option value="N">New</option>
+                                    <option value="R">Revised</option>
+                                </select>
+                            </div> *@
+
+                            <div class="icheck-inline col-md-4">
+                                <label>
+                                    <input id="ck_saleTax" type="checkbox" class="icheck"
+                                        data-checkbox="icheckbox_square-grey">Including Sale Tax
+                                </label>
+                            </div>
+
+                            <label class="control-label col-md-1" style="text-align:left;">
+                                Date
+                            </label>
+                            <div class="col-md-3">
+                                <div class='input-group date' id='txt_dat'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Salesman
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" id="txt_slsman" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Customer
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" id="txt_cus" class="form-control" />
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Previous No #
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" id="txt_pquo" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Remarks
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" id="txt_rmk" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Item
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="txt_itm" class="form-control" />
+
+                            </div>
+                            <div class="col-md-1">
+
+                                <input id="btn_itmmodal" type="button" value="+" class="btn btn-success" />
+                            </div>
+                            <label class="control-label col-md-1" style="text-align:left;">
+                                Location
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="txt_location" class="form-control" />
+                            </div>
+
+                            @* <label class="control-label col-md-1" style="text-align:left;">
+                                Rate
+                                </label>
+                                <div class="col-md-1">
+                                <input type="text" id="txt_rate" class="form-control" value="0" />
+                                </div>
+                                <label class="control-label col-md-1" style="text-align:left;">
+                                Amount
+                                </label>
+                                <div class="col-md-1">
+                                <input type="text" id="txt_amount" class="form-control" value="0.00" disabled />
+                                </div> *@
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Remarks
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" id="txt_itmrmk" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Qty
+                            </label>
+                            <div class="col-md-2">
+                                <input type="text" id="txt_qty" class="form-control" value="0" />
+                            </div>
+
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Delivery Days
+                            </label>
+                            <div class="col-md-2">
+                                <input type="text" id="txt_deldays" class="form-control" value="0" />
+                            </div>
+                            <div class="col-md-1">
+                            </div>
+                            <div class="col-md-2" style="text-align:right;">
+                                <input id="btn_valadd" type="button" value="  Value Addition" onclick=""
+                                    class="btn btn-info" />
+                            </div>
+                            <div class="col-md-1">
+                            </div>
+                        </div>
+
+                        <table id="detailsTable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;">Action</th>
+                                    <th style="text-align:center;">S.No</th>
+                                    <th style="display: none;">Item Id</th>
+                                    <th>Item</th>
+                                    <th>Qty</th>
+                                    <th>Rate</th>
+                                    <th style="display: none;">Location ID</th>
+                                    <th>Location</th>
+                                    <th>Delivery Days</th>
+                                    <th>Approval</th>
+                                    <th>Remarks</th>
+                                    <th>Value Addition</th>
+                                    <th style="display: none;">ItemIdPaper</th>
+                                    <th style="display: none;">PrintingColorId</th>
+                                    <th style="display: none;">DetailID</th>
+
+                                </tr>
+                            </thead>
+                            <tbody> </tbody>
+                        </table>
+                        <table id="termscondition_Table" class="table table-striped table-bordered"
+                            style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;">Terms & Conditions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @* <tr>
+                                    <td style="text-align:left;">
+                                    <label>
+                                    <input id="ck_act" type="checkbox" class="icheck"
+                                    data-checkbox="icheckbox_square-grey">Demo 1
+                                    </label>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td style="text-align:left;">
+                                    <label>
+                                    <input id="ck_act" type="checkbox" class="icheck"
+                                    data-checkbox="icheckbox_square-grey">Demo 2
+                                    </label>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td style="text-align:left;">
+                                    <label>
+                                    <input id="ck_act" type="checkbox" class="icheck"
+                                    data-checkbox="icheckbox_square-grey">Demo 3
+                                    </label>
+                                    </td>
+                                    </tr> *@
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@* Create & Edit model start *@
+
+@* Create & Edit Value Addtion model start *@
+<div id="data_ValAddModal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Value Addition</h4>
+            </div>
+            <form id="ValueAddition_form">
+                <div class="modal-body">
+                    @*Master*@
+
+                    <div class="form-horizontal">
+
+                        <table id="quot_paperTable" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="text-align:center;">Paper</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center; width:30%">Item</td>
+                                    <td>
+                                        <input type="text" id="txt_pitem" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="quot_printdptTable" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="text-align:center;">Printing Department</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Color</td>
+                                    <td>
+                                        <input type="text" id="txt_pcolor" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Water Base</td>
+                                    <td>
+                                        <input type="text" id="txt_pwbase" class="form-control" />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;width:30%">OPV</td>
+                                    <td>
+                                        <input type="text" id="txt_popv" class="form-control" />
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="quot_uvdptTable" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="text-align:center;">UV Department</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Coating</td>
+                                    <td>
+                                        <input type="text" id="txt_uvc" class="form-control" />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Coating Area</td>
+                                    <td>
+                                        <input type="text" id="txt_uvca" class="form-control" />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Holographic Coating</td>
+                                    <td>
+                                        <input type="text" id="txt_uvhc" class="form-control" />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Holographic Coating Area</td>
+                                    <td>
+                                        <input type="text" id="txt_uvhca" class="form-control" />
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="quot_lamdptTable" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="text-align:center;">Lamination Department</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Coating</td>
+                                    <td>
+                                        <input type="text" id="txt_lc" class="form-control" />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Coating Area</td>
+                                    <td>
+                                        <input type="text" id="txt_lca" class="form-control" />
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="quot_foildptTable" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="text-align:center;">Foiling Department</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Hot Stamping</td>
+                                    <td>
+                                        <input type="text" id="txt_fhs" class="form-control" />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Hot Stanping Area</td>
+                                    <td>
+                                        <input type="text" id="txt_fhsa" class="form-control" />
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="quot_diecutdptTable" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="text-align:center;">Die Cutting Department</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Die Cutting</td>
+                                    <td>
+                                        <input type="text" id="txt_dc" class="form-control" />
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="quot_pastdptTable" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="text-align:center;">Pasting Department</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Pasting</td>
+                                    <td>
+                                        <input type="text" id="txt_pasting" class="form-control" />
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="quot_eltdptTable" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="text-align:center;">Eyelet Department</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Eyelet</td>
+                                    <td>
+                                        <input type="text" id="txt_eyelet" class="form-control" />
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="quot_subltdptTable" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="text-align:center;">Sublet Department</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Sublet</td>
+                                    <td>
+                                        <input type="text" id="txt_sublet" class="form-control" />
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="quot_packdptTable" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="text-align:center;">Packing Department</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;width:30%">Nature Of Packing</td>
+                                    <td>
+                                        <input type="text" id="txt_pn" class="form-control" />
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div style="text-align:right;">
+                                <input id="data_ValAddModal" type="button" value="Value Addition" onclick="detail()"
+                                    class="btn btn-success" data-dismiss="modal" />
+                                <input id="btn_valadd_cls" type="button" value="Close" onclick="discon()"
+                                    class="btn btn-danger" data-dismiss="modal" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@* Create & Edit Value Addtion model start *@
+
+@* Create Item Modal Start *@
+
+<div id="item_data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important; margin-top:6%; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>
+                    Add Item
+                </h4>
+                <div id="img_load_sav" style="width:100%;text-align:center;">
+                    <img src="~/images/working.GIF" />
+                </div>
+            </div>
+            <form id="create_form">
+                <div class="row">
+                    <div class="form-horizontal">
+                        <div class="col-md-12" style="text-align:right;">
+                            <input id="btn_save" type="button" value="Save" onclick="itemsavrec();"
+                                class="btn btn-success" />
+                            @* <input id="btn_upd" type="button" value="Update" onclick="updrec()"
+                                class="btn btn-warning" /> *@
+                            <input id="btn_cls" type="button" value="Close" onclick="disconItem()"
+                                class="btn btn-danger" data-dismiss="modal" />
+                        </div>
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Brand
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_bd" class="form-control" />
+                                </div>
+
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Sub Category
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" id="txt_sb" class="form-control" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2" style="text-align:left;">
+                                    Name
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="text" id="txt_nam" class="form-control" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@* Create Itme Modal End @*@
+<script src="~/FunctionJS/Sales/Transaction/Quotation.js?@Guid.NewGuid().ToString("n")"></script>

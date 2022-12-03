@@ -1,0 +1,1 @@
+﻿var apiUrl_View =window.location.origin;

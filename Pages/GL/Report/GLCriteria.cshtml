@@ -1,0 +1,248 @@
+@page
+@{
+    Layout = "_Layout";
+}
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>GL Criteria <span id="creheading"></span></h2>
+                <div class="clearfix"></div>
+                <input type="hidden" id="reportid" />
+            </div>
+            <div class="container">
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="text-align:left;">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <input type="submit" value="View" id="btn_view">
+                                                <input type="reset" value="Cancel">
+                                            </div>
+                                            <div class="form-group">
+                                                <a id="ReportChartofAccounts" onclick="discon(1);">Chart of Accounts</a>
+                                            </div>
+                                            <div class="form-group">
+                                                <a id="ReportVoucher" onclick="discon(2);">Voucher</a>
+                                            </div>
+                                            <div class="form-group">
+                                                <a id="ReportCashBank" onclick="discon(3);">Cash / Bank Book</a>
+                                            </div>
+                                            <div class="form-group">
+                                                <a id="ReportBankReconciliation" onclick="discon(4);">Bank
+                                                    Reconciliation</a>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <a id="ReportGeneralLedger" onclick="discon(5);">General Ledger</a>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <a id="ReportTrialBalance" onclick="discon(6);">Trial Balance</a>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <a id="ReportTrialBalanceSixColumn" onclick="discon(7);">Trial Balance
+                                                    Six Column</a>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <a id="ReportProfitLoss" onclick="discon(8);">Profit/ (Loss)
+                                                    Statement</a>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <a id="ReportBalanceSheet" onclick="discon(9);">Balance Sheet</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                        <div id="div_datfrmto">
+                                            <div class="form-group">
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    Date
+                                                </label>
+                                                <div class="col-md-3">
+                                                    <div class='input-group date' id='txt_dat_frm'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar">
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    To
+                                                </label>
+                                                <div class="col-md-3">
+                                                    <div class='input-group date' id='txt_dat_to'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar">
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="div_datason">
+                                            <div class="form-group">
+                                                <label class="control-labelcol-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                    Date As On
+                                                </label>
+                                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                    <div class='input-group date' id='txt_datason'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar">
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--Voucher Start-->
+                                        <div id="div_vch">
+                                            <div class="form-group">
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    Status
+                                                </label>
+                                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                    <select id="ddl_vch_status" class="bs-select form-control">
+                                                        <option value="">All</option>
+                                                        <option value="Approved">Approved</option>
+                                                        <option value="Un-Approved">Un-Approved</option>
+                                                        <option value="Un-Cleared Chq">Un-Cleared Chq</option>
+                                                        <option value="Cleared Chq">Cleared Chq</option>
+                                                        <option value="Difference">Difference</option>
+                                                        <option value="Check">Check</option>
+                                                        <option value="Un-Check">Un-Check</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    Type
+                                                </label>
+                                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                    <input type="text" id="txt_vch_type" class="form-control"
+                                                        placeholder="Search Voucher Type" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    Chq #
+                                                </label>
+                                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                    <input type="text" id="txt_chqno" class="form-control"
+                                                        placeholder="Search Chq #" />
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <!--Voucher End-->
+                                        <!--Cash/ Book Start-->
+                                        <div id="div_cb">
+                                            <div class="form-group">
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    Cash/ Bank
+                                                </label>
+                                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                    <select id="ddl_vch_cb" class="bs-select form-control">
+                                                        <option onclick="fillCashBankAccount('C');" value="C">Cash
+                                                        </option>
+                                                        <option onclick="fillCashBankAccount('B');" value="B">Bank
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            @* <div class="form-group">
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                Account
+                                                </label>
+                                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <input type="text" id="txt_acc_cb" class="form-control" placeholder="Search
+                                                Account" />
+                                                </div>
+                                                </div> *@
+                                        </div>
+                                        <!--Cash/Bank Book End-->
+                                        <!--Reconcilliation Start-->
+                                        <div id="div_bankrecon">
+                                            <div class="form-group">
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    Bank Amount
+                                                </label>
+                                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                    <input type="number" id="txt_bk_amt" class="form-control"
+                                                        placeholder="Write Amount" value=0 />
+                                                </div>
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    Bank Account
+                                                </label>
+                                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                                    <input type="text" id="txt_acc_bk" class="form-control"
+                                                        placeholder="Search Bank Account" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--Bank Reconcilliation End-->
+                                        <!--Detail Account Start-->
+                                        <div id="div_acc">
+                                            <div class="form-group">
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    Account
+                                                </label>
+                                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                    <input type="text" id="txt_acc" class="form-control"
+                                                        placeholder="Search Account" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Detail Account End-->
+                                        <!--Trial Balance Start-->
+                                        <div id="div_tb">
+                                            <div class="form-group">
+                                                <label class="control-labelcol-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                    Status
+                                                </label>
+                                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                    <select id="ddl_tb" class="bs-select form-control">
+                                                        <option value="0">All</option>
+                                                        <option value="1">Only Opening</option>
+                                                        <option value="2">Without Only Opening</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Trial Balance End-->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/FunctionJS/GL/Report/GLCriteria.js?@Guid.NewGuid().ToString("n")"></script>

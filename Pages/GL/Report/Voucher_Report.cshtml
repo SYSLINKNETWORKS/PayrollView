@@ -1,0 +1,99 @@
+﻿@page
+@{
+    Layout = "_Layout_Report";
+}
+
+<!DOCTYPE html>
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Voucher Report</title>
+    @*<style type="text/css">
+        tbody tr:hover {
+            background-color: lightgray;
+            font-family: Arial;
+        }
+    </style>*@
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <div class="clearfix"></div>
+                </div>
+
+                <label id="lbl_id" style="visibility:hidden"></label>
+
+
+                <div class="x_content">
+                    <div class="col-md-12 col-xs-12">
+                        <div id="lbl_company_name" style="text-align:center;font-size:14pt;font-weight:bold;"></div>
+                        <div id="lbl_head" style="text-align:center;font-variant-caps:all-petite-caps;font-size:12pt;font-weight:bold;"></div>
+                        
+
+
+
+                        <div class="container">
+                            <div class="card-box table-responsive">
+
+                                <!-- start project list -->
+                                <table id="detail_table" class="table table-sm" style="font-size:smaller;">
+                                    <thead id="tr_heading">
+
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <!-- end project list -->
+
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+
+                                <div class="card-box table-responsive">
+                                    <div style="float:left; width:250px; text-align:center; ">
+                                        <p style="text-align: center;">Prepared By</p>
+                                        <label id="lbl_usr_prt"></label>
+                                        <hr style="border-style: none none solid none; border-width: thin; width: 75%; margin-top:13px;" />
+
+                                    </div>
+                                    <div style="float:left; width:250px;">
+                                        <p style="text-align: center;">Checked By</p>
+                                        <table>
+                                            <tr><td> &nbsp;</td></tr>
+                                        </table>
+                                        <hr style="border-style: none none solid none; border-width: thin; width: 75%" />
+                                    </div>
+                                    <div style="float:left; width:250px;">
+                                        <p style="text-align: center;">Received By</p>
+                                        <table>
+                                            <tr><td> &nbsp;</td></tr>
+                                        </table>
+                                        <hr style="border-style: none none solid none; border-width: thin; width: 75%" />
+
+
+                                    </div>
+                                    <div style="float:left; width:300px; border:2px solid black; height:100px;">
+
+                                    </div>
+
+                                </div>
+                                <div id="lbl_usrprt" style="text-align:right;font-variant-caps:all-petite-caps;font-size:6pt;font-weight:bold;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script src="~/FunctionJS/GL/GL_Report/GL_Report.js?@Guid.NewGuid().ToString("n")"></script>

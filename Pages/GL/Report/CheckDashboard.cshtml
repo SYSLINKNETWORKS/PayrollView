@@ -1,0 +1,222 @@
+@page
+@{
+
+    Layout = "_Layout";
+}
+<div class="row">
+    <div class="x_panel">
+        <div class="x_title">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>CHECK / APPROVED DASHBOARD</h2>
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 1%;">
+    @* Voucher *@
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color: rgba(132, 89, 174, 0.9); color:white;padding: 2%">
+            <img id="img_box_voucher" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Voucher</p>
+            <p id="box_voucher" style="font-size:large;"> 0</p>
+        </div>
+    </div>
+    @* Bill *@
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color:rgba(225, 71, 74, 1.0); color:white;padding: 2%">
+            <img id="img_box_bill" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Bill</p>
+            <p id="box_bill" style="font-size:large;"> 0</p>
+        </div>
+    </div>
+
+    @* Payment *@
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color:rgba(70, 144, 188, 1.0); color:white;padding: 2%">
+            <img id="img_box_payment" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Payment</p>
+            <p id="box_payment" style="font-size:large;"> 0</p>
+        </div>
+    </div>
+
+    @* Invoice *@
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color: rgb(77, 179, 153); color:white;padding: 2%">
+            <img id="img_box_invoice" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Invoice</p>
+            <p id="box_invoice" style="font-size:large;"> 0</p>
+        </div>
+    </div>
+
+    @* Received *@
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color: rgba(0, 153, 76, 0.9); color:white;padding: 2%">
+            <img id="img_box_received" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Received</p>
+            <p id="box_received" style="font-size:large;"> 0</p>
+        </div>
+    </div>
+
+    @* Debit Note *@
+    <div class="col-md-2 col-xs-2">
+        <div class="px-2" style="background-color: rgba(51, 51, 153, 0.9); color:white;padding: 2%">
+            <img id="img_box_debitnote" src="~/images/dashboard.GIF" />
+            <p style="font-size:large;"> Debit Note</p>
+            <p id="box_debitnote" style="font-size:large;"> 0</p>
+        </div>
+    </div>
+</div>
+<div class=" clearfix">
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="row" style="margin-bottom: 1%;">
+
+    @*Pending For Check/Pending For Approval Start*@
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Pending For Check Vouchers <span style="font-size:small;" id="spn_voucher_check"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4>
+                <table class="table table-striped" id="tbl_voucher_check" style="font-size:small; "></table>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">Pending For Approval Vouchers <span style="font-size:small"
+                        id="spn_voucher_approval" class="badge badge-pill badge-secondary">0</span></h4>
+                <table class="table table-striped" id="tbl_voucher_approval" style="font-size:small; "></table>
+            </div>
+        </div>
+    </div>
+    @*Pending For Check/Pending For Approval End*@
+
+    @*bill Check/bill Approval Start*@
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Pending Bill Check <span style="font-size:small;" id="spn_bill_check"
+                        class="badge badge-pill badge-secondary">0</span>
+                    <table class="table table-striped" id="tbl_bill_check" style="font-size:small;">
+                    </table>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">Pending Bill Approval <span style="font-size:small;"
+                        id="spn_bill_approval" class="badge badge-pill badge-secondary">0</span></h4>
+                <table class="table table-striped" id="tbl_bill_approval" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+    </div>
+    @*bill Check/bill Approval End*@
+
+    @*Debit Note Check Approval Start*@
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Pending Debit Note Check <span style="font-size:small;" id="spn_debitnote_check"
+                        class="badge badge-pill badge-secondary">0</span>
+                    <table class="table table-striped" id="tbl_debitnote_check" style="font-size:small;">
+                    </table>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">Pending Debit Note Approval <span style="font-size:small;"
+                        id="spn_debitnote_approval" class="badge badge-pill badge-secondary">0</span></h4>
+                <table class="table table-striped" id="tbl_debitnote_approval" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+    </div>
+    @*Debit Note Check Approval End*@
+
+
+
+    @*Payment Check/Payment Approval Start*@
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Pending Payment Check <span style="font-size:small;" id="spn_payment_check"
+                        class="badge badge-pill badge-secondary">0</span>
+                    <table class="table table-striped" id="tbl_payment_check" style="font-size:small;">
+                    </table>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">Pending Payment Approval <span style="font-size:small;"
+                        id="spn_payment_approval" class="badge badge-pill badge-secondary">0</span></h4>
+                <table class="table table-striped" id="tbl_payment_approval" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+    </div>
+    @*Payment Check/Payment Approval End*@
+
+    @*Invoice Check/Payment Approval Start*@
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Pending Invoice Check <span style="font-size:small;" id="spn_invoice_check"
+                        class="badge badge-pill badge-secondary">0</span>
+                    <table class="table table-striped" id="tbl_invoice_check" style="font-size:small;">
+                    </table>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">Pending Invoice Approval <span style="font-size:small;"
+                        id="spn_invoice_approval" class="badge badge-pill badge-secondary">0</span></h4>
+                <table class="table table-striped" id="tbl_invoice_approval" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+    </div>
+    @*Invoice Check/Payment Approval End*@
+
+
+
+    @*Received Check/Received Approval Start*@
+    <div class="row" style="margin-bottom: 1%;">
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">
+                    Pending Received Check <span style="font-size:small;" id="spn_received_check"
+                        class="badge badge-pill badge-secondary">0</span>
+                </h4>
+                <table class="table table-striped" id="tbl_received_check" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <div class="bg-white" style="color: rgb(128, 128, 128); overflow:scroll; height:400px;padding: 2%">
+                <h4 style="font-weight:bold;">Pending Received Approval <span style="font-size:small;"
+                        id="spn_received_approval" class="badge badge-pill badge-secondary">0</span></h4>
+                <table class="table table-striped" id="tbl_received_check" style="font-size:small;">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@*Received Check/Received Approval End*@
+
+<script src='~/FunctionJS/Notification.js?@Guid.NewGuid().ToString("n")'></script>
+<script src="~/FunctionJS/GL/Report/Dashboard/CheckDashboard.js?@Guid.NewGuid().ToString("n")"></script>

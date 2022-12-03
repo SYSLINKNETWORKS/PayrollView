@@ -1,0 +1,221 @@
+﻿@page
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<div id="img_load" style="width:100%;text-align:center;">
+    <img src="~/images/working.GIF" />
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Delivery Challan <small style="color:red"><span id="lbl_ref_time"></span></small></h2>
+                <p style="text-align:right;"> <button id="btn_new" class="btn btn-info"> New</button></p>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="card-box table-responsive">
+                            <table id="Table_View" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width:15%;">Action</th>
+                                        <th style="text-align:center">ID</th>
+                                        <th style="text-align:center">Date</th>
+                                        <th style="text-align:center">Customer </th>
+                                        <th style="text-align:center">Salesman</th>
+                                        <th style="text-align:center">Warehouse</th>
+                                        <th style="text-align:center">Remarks</th>
+                                        <th style="text-align:center">Status</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@* Create & Edit model start *@
+<div id="data_Modal" class="modal fade">
+    <div class="modal-dialog modal-lg" style="width:900px !important; margin-top:6%; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4>Delivery Challan</h4>
+            </div>
+            <form id="create_form">
+                <div class="modal-body">
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                NO
+                            </label>
+                            <div class="col-md-2">
+                                <input type="text" id="txt_no" class="form-control" value="0" min="0" />
+                            </div>
+                            <div id="txt_id" style="display: none;"></div>
+                            <label class="control-label col-md-1" style="text-align:left;">
+                                Date
+                            </label>
+                            <div class="col-md-3">
+                                <div class='input-group date' id='txt_dat'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="text-align:right;">
+                                <input id="btn_sav" type="button" value="Save" onclick="savrec()"
+                                    class="btn btn-success" />
+                                <input id="btn_update" type="button" value="Update" onclick="updrec()"
+                                    class="btn btn-warning" />
+                                <input id="btn_cls" type="button" value="Close" onclick="discon()"
+                                    class="btn btn-danger" data-dismiss="modal" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                SO #
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" id="txt_so" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Warehouse
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="txt_wh" class="form-control" />
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Remarks
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="txt_rmk" class="form-control" />
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Items
+                            </label>
+                            <div class="col-md-10">
+                                <input type="text" id="txt_itm" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @* <label class="control-label col-md-2" style="text-align:left;">
+                                Packing
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="txt_dpacking" class="form-control" />
+                            </div> *@
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Remarks
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="txt_drmk" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Order Qty
+                            </label>
+                            <div class="col-md-2">
+                                <input type="text" id="txt_orderqty" value="0" class="form-control" readonly />
+                                <input type="text" id="txt_variance" value="0" class="form-control" readonly
+                                    style="display:none" />
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Stock
+                            </label>
+                            <div class="col-md-2">
+                                <input type="text" id="txt_stk" value="0" class="form-control" readonly />
+                            </div>
+                            @* <label class="control-label col-md-1" style="text-align:left;">
+                                Quantity
+                            </label>
+                            <div class="col-md-3">
+                                <input type="text" id="txt_qty" value="0" class="form-control" />
+                            </div> *@
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Carton Qty
+                            </label>
+                            <div class="col-md-2">
+                                <input type="text" id="txt_masterqty" value="0" class="form-control"  />
+                            </div>
+                            <label class="control-label col-md-2" style="text-align:left;">
+                                Pcs
+                            </label>
+                            <div class="col-md-2">
+                                <input type="text" id="txt_innerqty" value="0" class="form-control"  />
+                            </div>
+                            <label class="control-label col-md-1" style="text-align:left;">
+                                Quantity
+                            </label>
+                            <div class="col-md-3">
+                                <input type="text" id="txt_qty" value="0" class="form-control" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6">
+
+                            </div>
+                            <div class="col-md-4">
+                                <input id="btn_add" type="button" value="Add" class="btn btn-success" />
+                            </div>
+                        </div>
+
+
+                        <table id="detailsTable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;">S.No</th>
+                                    <th style="display:none;">SaleOrderDetailId</th>
+                                    <th style="display: none;">Item Id</th>
+                                    <th>Item</th>
+                                    <th>Order Qty</th>
+                                    <th>Qty</th>
+                                    <th>Carton Qty</th>
+                                    <th>Pcs Qty</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody> </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@* Create & Edit model start *@
+
+
+<script src="~/FunctionJS/Sales/Transaction/DC.js?@Guid.NewGuid().ToString("n")"></script>
